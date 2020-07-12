@@ -2,7 +2,7 @@
   <div class="board">
     <h1>Board</h1>
     <div class="mainMsg">
-      <div class="liItem">
+      <div class="liItem" v-bind:style="{backgroundImage}">
         <ul class="ul">
           <li>liItem1</li>
           <li>liItem2</li>
@@ -18,6 +18,11 @@
 <script>
 export default {
   name: 'Board',
+  data: function() {
+    return {
+      backgroundImage: "url(" + require("@/assets/boardbg.jpg") + ")",
+    }
+  },
 }
 </script>
 
@@ -37,7 +42,7 @@ export default {
 	width: 500px;
 	height: 340px;
 	float: left;
-	background-image: url('../../assets/boardbg.jpg');
+	/*background-image: url('../../assets/boardbg.jpg');*/
 	background-size: 100% 100%;
 }
 

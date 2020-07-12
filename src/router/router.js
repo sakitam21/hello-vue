@@ -3,10 +3,10 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Main from '../components/Main.vue';
-import Board from '../components/main/Board.vue';
-import A from '../components/main/A.vue';
-import B from '../components/main/B.vue';
+import Main from '@/components/Main.vue';
+import Board from '@/components/main/Board.vue';
+import A from '@/components/main/A.vue';
+import B from '@/components/main/B.vue';
 
 //把组件（components）映射到路由（routes）
 export default new VueRouter({

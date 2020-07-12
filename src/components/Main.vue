@@ -18,8 +18,8 @@
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-import TopBar from './main/TopBar.vue'
-import MenuBar from './main/MenuBar.vue'
+import TopBar from '@/components/main/TopBar.vue'
+import MenuBar from '@/components/main/MenuBar.vue'
 
 export default {
   name: 'Main',
