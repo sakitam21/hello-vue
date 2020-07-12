@@ -2,7 +2,7 @@
   <div class="topbar">
     <div class="logo">
       <div class="text">Hello Vue</div>
-      <img src="assets/topbar/topbar.jpg" alt="logo" />
+      <img src="@/assets/topbar/topbar.jpg" alt="logo" />
     </div>
     <div class="menu">
       <div class="text">menu</div>
