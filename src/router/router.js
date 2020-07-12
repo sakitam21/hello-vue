@@ -36,6 +36,6 @@ export default new VueRouter({
 				},
 			]
 		}
-	],
-	mode:'hash'
+	]
+	//mode:'hash'
 })
