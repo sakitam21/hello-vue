@@ -1,38 +1,41 @@
 <template>
   <div id="main">
-    <!--
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  -->
+
     <header>
       <TopBar />
-      <MenuBar />
+      <SideBar />
     </header>
-    
+
     <div class="content">
-      <router-view></router-view>
+      <!--搜索框-->
+      <SearchBox /> 
+      <!--菜单栏-->
+      <Menu />
     </div>
-    
+
   </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+//顶栏
 import TopBar from '@/components/main/TopBar.vue'
-import MenuBar from '@/components/main/MenuBar.vue'
+import SideBar from '@/components/main/SideBar.vue'
+//搜索框
+import SearchBox from '@/components/main/SearchBox.vue'
+//菜单栏
+import Menu from '@/components/main/Menu.vue'
 
 export default {
   name: 'Main',
   components: {
-    //HelloWorld,
     TopBar,
-    MenuBar,
+    SideBar,
+    SearchBox,
+    Menu,   
   }
 }
 </script>
 
 <style scoped>
-.content{
-  margin-top: 10px;
-}
+
 </style>

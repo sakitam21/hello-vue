@@ -4,6 +4,7 @@
       <div class="text">Hello Vue</div>
       <img src="@/assets/topbar/topbar.jpg" alt="logo" />
     </div>
+
     <div class="menu">
       <div class="text">menu</div>
     </div>
@@ -24,8 +25,13 @@ export default {
 	padding:0 12%;
 	background-color: #fff;
 }
-.topbar .logo, .topbar .menu{
-	width: 50%;
+.topbar .logo{
+	width: 60%;
+	height: 80px;
+	float: left;
+}
+.topbar .menu{
+	width: 40%;
 	height: 80px;
 	float: left;
 }
