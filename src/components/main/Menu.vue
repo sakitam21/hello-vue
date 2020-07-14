@@ -21,10 +21,6 @@
       </router-link>
     </ul>
 
-    <div class="menu-card">
-      <router-view></router-view>
-    </div>
-
   </div>
 </template>
 
@@ -77,10 +73,5 @@ export default{
   border-bottom: 4px solid #008b8b;
   font-weight: bold;
   letter-spacing: 2px;
-}
-
-.menu-card{
-  background-color: #008b8b;
-  padding: 0 10%;
 }
 </style>

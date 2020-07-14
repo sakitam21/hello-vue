@@ -11,7 +11,12 @@
       <SearchBox /> 
       <!--菜单栏-->
       <Menu />
+      <div class="menu-card">
+        <router-view></router-view>
+      </div>
     </div>
+
+    <Footer />
 
   </div>
 </template>
@@ -24,6 +29,8 @@ import SideBar from '@/components/main/SideBar.vue'
 import SearchBox from '@/components/main/SearchBox.vue'
 //菜单栏
 import Menu from '@/components/main/Menu.vue'
+//底部栏
+import Footer from '@/components/main/Footer.vue'
 
 export default {
   name: 'Main',
@@ -31,11 +38,15 @@ export default {
     TopBar,
     SideBar,
     SearchBox,
-    Menu,   
+    Menu,
+    Footer,
   }
 }
 </script>
 
 <style scoped>
-
+.menu-card{
+  background-color: #008b8b;
+  padding: 10px 10%;
+}
 </style>
