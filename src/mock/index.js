@@ -4,4 +4,4 @@ import boardlist from './board/boardlist'
 const domain = 'http://mockjs.com/api'
 //console.log(boardlist);
 
-Mock.mock(`${domain}/boardlist`,boardlist)
+Mock.mock(`${domain}/boardlist`,'get',boardlist)

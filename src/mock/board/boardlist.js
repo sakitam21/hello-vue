@@ -3,10 +3,9 @@ const Random = Mock.Random
 
 let boardlist = []
 
-for(let i=0;i<5;i++){
+for(let i=0;i<8;i++){
 	let list={
-		imgurl:Random.image('340x120', '#AC823D', '#AC823D', 'png', 'group1'),
-		imginfo:Random.csentence(200, 240)
+		info:Random.sentence(5,6) //随机生成一个句子，第一个单词的首字母大写
 	}
 	boardlist.push(list);
 }

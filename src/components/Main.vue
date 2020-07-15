@@ -9,12 +9,22 @@
     <div class="content">
       <!--搜索框-->
       <SearchBox /> 
-      <!--菜单栏-->
-      <Menu />
-      <!--菜单内容-->
-      <div class="menu-card">
-        <router-view></router-view>
+      <!--图集-->
+      <Atlas />
+
+      <div class="info">
+        <div class="left">
+          <Board />
+        </div>
+        <div class="center">
+          <!--菜单栏-->
+          <Menu />
+        </div>
+        <div class="right">
+          <Profile />
+        </div>
       </div>
+      
     </div>
 
     <Footer />
@@ -28,10 +38,18 @@ import TopBar from '@/components/main/TopBar.vue'
 import SideBar from '@/components/main/SideBar.vue'
 //搜索框
 import SearchBox from '@/components/main/SearchBox.vue'
+//图集
+import Atlas from '@/components/main/Atlas.vue'
+
+import Board from '@/components/main/Board.vue';
+
 //菜单栏
 import Menu from '@/components/main/Menu.vue'
 //底部栏
 import Footer from '@/components/main/Footer.vue'
+
+import Profile from '@/components/main/Profile.vue'
+
 
 export default {
   name: 'Main',
@@ -39,15 +57,26 @@ export default {
     TopBar,
     SideBar,
     SearchBox,
+    Atlas,
+    Board,
     Menu,
+    Profile,
     Footer,
   }
 }
 </script>
 
 <style scoped>
-.menu-card{
-  background-color: #008b8b;
-  padding: 10px 10%;
+.info{
+  width: 100%;
+  height: 400px;
+}
+.info .left{
+  width: 40%;
+  float: left;
+}
+.info .center, .info .right{
+  width: 28%;
+  float: left;
 }
 </style>

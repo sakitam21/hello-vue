@@ -2,9 +2,9 @@
   <div class="menu">
 
     <ul class="ul">
-      <router-link :to="{name:'board'}">
+      <router-link :to="{name:'list1'}">
         <li class="list">
-          BOARD
+          LIST1
         </li>
       </router-link>
       <span class="divide"></span>
@@ -21,6 +21,10 @@
       </router-link>
     </ul>
 
+    <!--菜单内容-->
+    <div class="menu-card">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -39,6 +43,7 @@ export default{
 .menu{
   height: 48px;
   width: 100%;
+  margin: 36px 0;
   line-height: 48px;
   /*background-color: #f3f3f3;*/
 }
@@ -50,7 +55,6 @@ export default{
 }
 .menu .list{
   display: inline-block;
-  padding: 0 20px;
   text-align: center;
   font-size: 18px;
   vertical-align: top;
@@ -70,8 +74,12 @@ export default{
 }
 /*动态menu*/
 .router-link-exact-active{
-  border-bottom: 4px solid #008b8b;
+  border-bottom: 4px solid #ccc;
   font-weight: bold;
   letter-spacing: 2px;
+  color: #008b8b;
+}
+.menu-card{
+  padding: 0 10%;
 }
 </style>
