@@ -24,6 +24,9 @@
           <Profile />
         </div>
       </div>
+
+      <!--Important Things-->
+      <Notice />
       
     </div>
 
@@ -41,15 +44,17 @@ import SearchBox from '@/components/main/SearchBox.vue'
 //图集
 import Atlas from '@/components/main/Atlas.vue'
 
-import Board from '@/components/main/Board.vue';
+import Board from '@/components/main/Board.vue'
 
 //菜单栏
 import Menu from '@/components/main/Menu.vue'
-//底部栏
-import Footer from '@/components/main/Footer.vue'
 
 import Profile from '@/components/main/Profile.vue'
 
+import Notice from '@/components/main/Notice.vue'
+
+//底部栏
+import Footer from '@/components/main/Footer.vue'
 
 export default {
   name: 'Main',
@@ -61,6 +66,7 @@ export default {
     Board,
     Menu,
     Profile,
+    Notice,
     Footer,
   }
 }
