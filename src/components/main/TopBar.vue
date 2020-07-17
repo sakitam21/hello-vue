@@ -1,8 +1,9 @@
 <template>
+  <!--Advertisement-->
   <div class="topbar">
     <div class="logo">
-      <div class="text">Hello Vue</div>
-      <img src="@/assets/topbar.jpg" alt="logo" />
+      <div class="text">TopBar</div>
+      <img src="@/assets/images/topbar.jpg" alt="logo" />
     </div>
 
     <div class="menu">

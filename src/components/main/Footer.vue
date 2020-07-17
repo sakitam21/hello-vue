@@ -42,7 +42,6 @@
           <li>Tesie</li>
           <div class="divide"></div>
           <li>Iqsys</li>
-          <div class="divide"></div>
         </ul>
       </div>
     </div>
@@ -65,7 +64,6 @@
           <li>Tesie</li>
           <div class="divide"></div>
           <li>Iqsys</li>
-          <div class="divide"></div>
         </ul>
       </div>
     </div>
@@ -88,7 +86,6 @@
           <li>Tesie</li>
           <div class="divide"></div>
           <li>Iqsys</li>
-          <div class="divide"></div>
         </ul>
       </div>
     </div>
@@ -130,7 +127,7 @@ export default{
 .footer .footerItem .content{
 	height: 60px;
 	line-height: 30px;
-	width: 60%;
+	width: 70%;
 	float: left;
 	text-align: center;
 }

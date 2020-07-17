@@ -1,8 +1,11 @@
 <template>
   <div id="main">
-
+    <!--确定这是一个什么类型的网站-->
+    <!--资讯-->
     <header>
+      <!--Advertisement-->
       <TopBar />
+      <!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->
       <SideBar />
     </header>
 

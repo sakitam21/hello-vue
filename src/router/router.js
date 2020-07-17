@@ -25,7 +25,7 @@ export default new VueRouter({
 				{
 					path:'list1',
 					name:'list1',
-					component: C
+					component: A
 				},
 				{
 					path:'list2',
@@ -35,7 +35,7 @@ export default new VueRouter({
 				{
 					path:'list3',
 					name:'list3',
-					component: A
+					component: C
 				},
 			]
 		}

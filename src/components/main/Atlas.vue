@@ -2,12 +2,12 @@
 	<div class="atlas">
 		<h1>《&nbsp;&nbsp;&nbsp;&nbsp;atlas&nbsp;&nbsp;&nbsp;&nbsp;》</h1>
 		<div class="imgs">
-			<img src="@/assets/a_01.jpg" alt="a_01">
-			<img src="@/assets/a_02.jpg" alt="a_02">
-			<img src="@/assets/a_05.jpg" alt="a_02">
-			<img src="@/assets/a_03.jpg" alt="a_02">
-			<img src="@/assets/a_06.jpg" alt="a_02">
-			<img src="@/assets/a_04.jpg" alt="a_02">
+			<img src="@/assets/images/a_01.jpg" alt="a_01">
+			<img src="@/assets/images/a_02.jpg" alt="a_02">
+			<img src="@/assets/images/a_05.jpg" alt="a_02">
+			<img src="@/assets/images/a_03.jpg" alt="a_02">
+			<img src="@/assets/images/a_06.jpg" alt="a_02">
+			<img src="@/assets/images/a_04.jpg" alt="a_02">
 		</div>
 	</div>
 </template>
