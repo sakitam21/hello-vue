@@ -11,15 +11,17 @@
       </li>
       <span class="divide"></span>
       <li class="list">
-          <span class="iconfont icon-help"></span>&nbsp;Help
+        <!--以后在help里面写开发日志，每天更新-->
+        <span class="iconfont icon-help"></span>&nbsp;Help
       </li>
       <span class="divide"></span>
       <li class="list">
-          <span class="iconfont icon-dizhi"></span>&nbsp;Location
+        <!--需要使用百度map API-->
+        <span class="iconfont icon-dizhi"></span>&nbsp;Location
       </li>
       <span class="divide"></span>
       <li class="list">
-          <span class="iconfont icon-riqi1"></span>&nbsp;{{date}}
+        <span class="iconfont icon-riqi1"></span>&nbsp;{{date}}
       </li>
     </ul>
   </div>
