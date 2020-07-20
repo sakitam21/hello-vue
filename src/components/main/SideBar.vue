@@ -1,27 +1,23 @@
 <template>
-<!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->  
+<!--确定登陆的基本信息，诸如地区、国家，以及对于该网站所需要的Help和开发日志-->  
   <div class="sidebar">  
     <ul class="ul">
       <li class="list">
-          User
+        <!--以后在Logfile里面写开发日志，每天更新-->
+        Logfile
       </li>
       <span class="divide"></span>
       <li class="list">
-          <span class="iconfont icon-guojiapitchon"></span>&nbsp;Country
+        <span class="iconfont icon-guojiapitchon"></span>&nbsp;Country
       </li>
       <span class="divide"></span>
       <li class="list">
-        <!--以后在help里面写开发日志，每天更新-->
         <span class="iconfont icon-help"></span>&nbsp;Help
       </li>
       <span class="divide"></span>
       <li class="list">
         <!--需要使用百度map API-->
         <span class="iconfont icon-dizhi"></span>&nbsp;Location
-      </li>
-      <span class="divide"></span>
-      <li class="list">
-        <span class="iconfont icon-riqi1"></span>&nbsp;{{date}}
       </li>
     </ul>
   </div>
@@ -38,24 +34,6 @@ export default{
   //实例创建时执行的操作
   created:function(){
     
-  },
-  //计算属性
-  computed:{
-    //获取当前日期
-    date:function(){
-      var date = new Date();
-      var year = date.getFullYear();
-      var month = date.getMonth()+1;
-      var strDate = date.getDate();
-      if (month >= 1 && month <= 9) {
-              month = "0" + month;
-          }
-          if (strDate >= 0 && strDate <= 9) {
-              strDate = "0" + strDate;
-          }
-          var currentdate = year + '-' + month + '-' + strDate;
-          return currentdate;
-    }
   }
 }
 </script>
@@ -65,22 +43,23 @@ export default{
   height: 34px;
   width: 100%;
   line-height: 34px;
-  font-size: 16px;
-  background-color: #f5f5f5;
+  font-size: 14px;
+  background-color: #fafafa;
 }
-
 .sidebar .ul{
   height: 34px;
-  width: 88%;
-  padding: 0 6%;
+  width: 92%;
+  padding: 0 4%;
 }
 .sidebar .list{
   display: inline-block;
-  padding: 0 30px;
+  padding: 0 20px;
   text-align: center;
   vertical-align: top;
   float: right;
-
+}
+.sidebar .list:hover{
+  font-weight: bold;
 }
 .sidebar .divide{
   display: inline-block;

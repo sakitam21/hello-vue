@@ -3,9 +3,10 @@
     <!--确定这是一个什么类型的网站-->
     <!--资讯-->
     <header>
-      <!--Advertisement-->
+      <!--Advertisement：由网站管理者决定(hidden:true)-->
       <TopBar />
       <!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->
+      <!--此类信息在登入网站时会自动获取并更新-->
       <SideBar />
     </header>
 

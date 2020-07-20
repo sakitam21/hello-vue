@@ -20,7 +20,7 @@ export default{
 
 <style scoped>
 .atlas{
-	background-color: #f5f5f5;
+	background-color: #f4f4f4;
 	color: #f5f5f5;
 	text-align: center;
 	height: 600px;
