@@ -1,4 +1,5 @@
 <template>
+  <!--首要目标是形成一个项目闭环-->
   <div id="app">
     <!--
     <img alt="Vue logo" src="./assets/logo.png">
