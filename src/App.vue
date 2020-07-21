@@ -4,7 +4,7 @@
     <!--
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-  -->
+    -->
   <!--告诉Vue Router在哪里渲染相应路径对应的组件-->
   <router-view></router-view>
   </div>
