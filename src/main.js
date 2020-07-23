@@ -9,6 +9,7 @@ import './mock/index.js'
 
 //axios
 import axios from 'axios'
+
 axios.defaults.baseURL = 'http://mockjs.com/api'
 
 //阿里巴巴矢量图标库
