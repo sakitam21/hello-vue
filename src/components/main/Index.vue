@@ -1,12 +1,12 @@
 <template>
-  <div class="a">
-    <h1>A</h1>
+  <div class="index">
+    <h1>首页</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'A',
+  name: 'Index',
 }
 </script>
 

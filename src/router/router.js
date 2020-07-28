@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Main from '@/components/Main.vue';
-import A from '@/components/main/A.vue';
+import Index from '@/components/main/Index.vue';
 import B from '@/components/main/B.vue';
 import C from '@/components/main/C.vue';
 
@@ -16,16 +16,16 @@ export default new VueRouter({
 	routes: [
 		{
 			path:'/',
-			redirect:'/main/list1'
+			redirect:'/main/index'
 		},
 		{
 			path:'/main',
 			component: Main,
 			children: [
 				{
-					path:'list1',
-					name:'list1',
-					component: A
+					path:'index',
+					name:'index',
+					component: Index
 				},
 				{
 					path:'list2',

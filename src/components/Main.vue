@@ -1,14 +1,18 @@
 <template>
   <div id="main">
-    <!--确定这是一个什么类型的网站-->
-    <!--资讯-->
     <header>
-      <!--Advertisement：由网站管理者决定(hidden:true)-->
-      <TopBar />
-      <!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->
-      <!--此类信息在登入网站时会自动获取并更新-->
-      <SideBar />
+      <!--菜单栏-->
+      <TopMenu />
     </header>
+
+    <!--菜单对应内容-->
+    <div class="menu-card">
+      <router-view></router-view>
+    </div>
+
+    <!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->
+    <!--此类信息在登入网站时会自动获取并更新-->
+    <SideBar />
 
     <div class="content">
       <!--搜索框-->
@@ -19,10 +23,6 @@
       <div class="info">
         <div class="left">
           <Board />
-        </div>
-        <div class="center">
-          <!--菜单栏-->
-          <Menu />
         </div>
         <div class="right">
           <Profile />
@@ -40,8 +40,9 @@
 </template>
 
 <script>
+import TopMenu from '@/components/main/TopMenu.vue'
 //顶栏
-import TopBar from '@/components/main/TopBar.vue'
+//import TopBar from '@/components/main/TopBar.vue'
 import SideBar from '@/components/main/SideBar.vue'
 //搜索框
 import SearchBox from '@/components/main/SearchBox.vue'
@@ -51,7 +52,7 @@ import Atlas from '@/components/main/Atlas.vue'
 import Board from '@/components/main/Board.vue'
 
 //菜单栏
-import Menu from '@/components/main/Menu.vue'
+//import Menu from '@/components/main/Menu.vue'
 
 import Profile from '@/components/main/Profile.vue'
 
@@ -63,12 +64,13 @@ import Footer from '@/components/main/Footer.vue'
 export default {
   name: 'Main',
   components: {
-    TopBar,
+    TopMenu,
+    //TopBar,
     SideBar,
     SearchBox,
     Atlas,
     Board,
-    Menu,
+    //Menu,
     Profile,
     Notice,
     Footer,
@@ -85,8 +87,8 @@ export default {
   width: 40%;
   float: left;
 }
-.info .center, .info .right{
-  width: 28%;
+.info .right{
+  width: 50%;
   float: left;
 }
 </style>

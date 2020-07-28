@@ -2,10 +2,9 @@
   <div class="searchbox">
     <div class="formbox">
       <form v-on:submit.prevent="alertKeyWord" class="myform">
-        <input type="text" v-model="keyword" placeholder="Edit keyword">
+        <input type="text" v-model="keyword" placeholder="搜索关键字">
 		<button>Search</button>
       </form>
-      <div class="store">Store</div>
 	</div>
   </div>
 </template>
@@ -29,32 +28,27 @@ export default{
 <style scoped>
 .searchbox{
 	width: 100%;
-	height: 150px;
-	background-color: #fff;
-	border:1px solid #fff;
+	height: 40px;
 }
-
 .searchbox .formbox{
-	width: 720px;
-	height: 100px;
-	margin: 30px auto 20px auto;
+	width: 100%;
+	height: 40px;
 }
-
 .formbox .myform{
-	height: 36px;
-	width: 600px;
-	margin: 20px 0;
-	border: 2px solid #000;
+	height: 32px;
+	width: 100%;
+	margin: 3px 0;
+	border: 1px solid #ccc;
 	border-radius: 8px;
-	float: left;
 }
 
 .myform input{
-	width: 520px;
-	height: 36px;
+	width: 70%;
+	height: 32px;
 	border: none;
 	padding: 0 10px;
 	border-radius: 8px 0 0 8px;
+	float: left;
 }
 
 .myform input:focus{
@@ -62,22 +56,14 @@ export default{
 }
 
 .myform button{
-	width: 60px;
-	height: 36px;
+	display: inline-block;
+	height: 32px;
+	padding: 0 10px;
 	border:none;
-	background-color: #000;
+	float: right;
+	background-color: #ccc;
 	color: #fff;
 }
-
-.formbox .store{
-	width: 60px;
-	height: 40px;
-	float: left;
-	margin: 20px;	
-	line-height: 40px;
-	text-align: center;
-}
-
 </style>
 
 
