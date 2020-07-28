@@ -104,7 +104,7 @@ export default{
   color: #008b8b !important;
 }
 .topmenu .search{
-  width: 28%;
+  width: 30%;
   height: 40px;
   margin-top: 3px;
   margin-left: 4%;

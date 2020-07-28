@@ -12,12 +12,10 @@
 
     <!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->
     <!--此类信息在登入网站时会自动获取并更新-->
-    <SideBar />
+    <!--<SideBar />
 
     <div class="content">
-      <!--搜索框-->
       <SearchBox /> 
-      <!--图集-->
       <Atlas />
 
       <div class="info">
@@ -29,51 +27,41 @@
         </div>
       </div>
 
-      <!--Important Things-->
       <Notice />
-      
     </div>
 
     <Footer />
+    -->
 
   </div>
 </template>
 
 <script>
 import TopMenu from '@/components/main/TopMenu.vue'
-//顶栏
+//
 //import TopBar from '@/components/main/TopBar.vue'
-import SideBar from '@/components/main/SideBar.vue'
-//搜索框
-import SearchBox from '@/components/main/SearchBox.vue'
-//图集
-import Atlas from '@/components/main/Atlas.vue'
-
-import Board from '@/components/main/Board.vue'
-
-//菜单栏
+//import SideBar from '@/components/main/SideBar.vue'
+//import SearchBox from '@/components/main/SearchBox.vue'
+//import Atlas from '@/components/main/Atlas.vue'
+//import Board from '@/components/main/Board.vue'
 //import Menu from '@/components/main/Menu.vue'
-
-import Profile from '@/components/main/Profile.vue'
-
-import Notice from '@/components/main/Notice.vue'
-
-//底部栏
-import Footer from '@/components/main/Footer.vue'
+//import Profile from '@/components/main/Profile.vue'
+//import Notice from '@/components/main/Notice.vue'
+//import Footer from '@/components/main/Footer.vue'
 
 export default {
   name: 'Main',
   components: {
     TopMenu,
     //TopBar,
-    SideBar,
-    SearchBox,
-    Atlas,
-    Board,
+    //SideBar,
+    //SearchBox,
+    //Atlas,
+    //Board,
     //Menu,
-    Profile,
-    Notice,
-    Footer,
+    //Profile,
+    //Notice,
+    //Footer,
   }
 }
 </script>
