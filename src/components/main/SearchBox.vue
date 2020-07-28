@@ -19,7 +19,11 @@ export default{
 	},
 	methods:{
 		alertKeyWord:function(){
-			alert(this.keyword);
+			if(this.keyword!==''){
+				alert(this.keyword);
+			}else{
+				alert("请输入搜索关键字！")
+			}
 		}
 	}
 }
