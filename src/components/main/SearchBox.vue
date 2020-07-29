@@ -42,7 +42,7 @@ export default{
 	height: 32px;
 	width: 100%;
 	margin: 3px 0;
-	border: 1px solid #ccc;
+	border: 1px solid #999;
 	border-radius: 8px;
 }
 
@@ -65,7 +65,7 @@ export default{
 	padding: 0 10px;
 	border:none;
 	float: right;
-	background-color: #ccc;
+	background-color: #999;
 	color: #fff;
 }
 </style>

@@ -10,6 +10,39 @@
       <router-view></router-view>
     </div>
 
+    <!--登录表单-->
+    <div class="login" v-if="hassignin" v-on:click="cancelsignin">
+      <form v-on:submit.prevent="signIn" class="loginform" v-on:click="loginform">
+        <h2>登录表单</h2>
+        <div class="inputItem">
+          <label for="username">username</label>
+          <input type="text" v-model="username" id="username">
+        </div>
+        <div class="inputItem">
+          <label for="password">password</label>
+          <input type="text" v-model="password" id="password">
+        </div>
+        <button>signin</button>
+      </form>
+    </div>
+    <!--注册表单-->
+    <div class="login" v-if="hassignup" v-on:click="cancelsignup">
+      <form v-on:submit.prevent="signUp" class="loginform" v-on:click="loginform">
+        <h2>注册表单</h2>
+        <div class="inputItem">
+          <label for="username">username</label>
+          <input type="text" v-model="username" id="username">
+        </div>
+        <div class="inputItem">
+          <label for="password">password</label>
+          <input type="text" v-model="password" id="password">
+        </div>
+        <button>signup</button>
+      </form>
+    </div>
+
+    {{this.$store.state}}
+
     <!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->
     <!--此类信息在登入网站时会自动获取并更新-->
     <!--<SideBar />
@@ -62,21 +95,67 @@ export default {
     //Profile,
     //Notice,
     //Footer,
+  },
+  data:function(){
+    return {
+      username:'',
+      password:'',
+    }
+  },
+  computed:{
+    hassignin:function(){ //是否弹出登录表单
+      return this.$store.state.user.hassignin
+    },
+    hassignup:function(){ //是否弹出注册表单
+      return this.$store.state.user.hassignup
+    }
+  },
+  methods:{
+    //阻止登录表单区域的事件冒泡
+    loginform:function(event){
+      event.stopPropagation();
+    },
+    cancelsignin:function(){ //取消登录
+      this.$store.commit('editsignin')
+      this.username=''
+      this.password=''
+    },
+    cancelsignup:function(){ //取消注册
+      this.$store.commit('editsignup')
+      this.username=''
+      this.password=''
+    },
   }
 }
 </script>
 
 <style scoped>
-.info{
+.main{
   width: 100%;
-  height: 400px;
 }
-.info .left{
-  width: 40%;
-  float: left;
+/*生成遮罩层*/
+.login{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 100;
 }
-.info .right{
-  width: 50%;
-  float: left;
+.login .loginform{
+  width: 440px;
+  height: 220px;
+  margin: 80px auto;
+  padding: 30px 60px;
+  background-color: #fff;
+  border: 1px solid #008b8b;
+  border-radius: 8px;
+  text-align: center;
+}
+.login .loginform .inputItem{
+  width: 100%;
+  height: 30px;
+  margin-top: 16px;
 }
 </style>

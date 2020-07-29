@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 import Main from '@/components/Main.vue';
 import Index from '@/components/main/Index.vue';
-import B from '@/components/main/B.vue';
+import Column from '@/components/main/Column.vue';
 import C from '@/components/main/C.vue';
 
 /*
@@ -28,9 +28,9 @@ export default new VueRouter({
 					component: Index
 				},
 				{
-					path:'list2',
-					name:'list2',
-					component: B
+					path:'column',
+					name:'column',
+					component: Column
 				},
 				{
 					path:'list3',

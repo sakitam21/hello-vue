@@ -13,9 +13,9 @@
           首页
         </li>
       </router-link>
-      <router-link :to="{name:'list2'}">
+      <router-link :to="{name:'column'}">
         <li class="list">
-          LIST2
+          专栏
         </li>
       </router-link>
       <router-link :to="{name:'list3'}">
@@ -29,11 +29,15 @@
       <SearchBox />
     </div>
 
-    <div class="user">
+    <div class="user" v-if="!haslogin">
       <ul>
-        <li class="list">免费注册</li>
-        <li class="list">立即登录</li>
+        <li class="list" v-on:click="showsignup">免费注册</li>
+        <li class="list" v-on:click="showsignin">立即登录</li>
       </ul>
+    </div>
+
+    <div class="user" v-else>
+      {{this.$store.state.user.username}}
     </div>
 
   </div>
@@ -49,9 +53,23 @@ export default{
   },
   data: function() {
     return {
-
+      haslogin:'', //是否已经登录
     }
-  }
+  },
+  created: function(){
+    var that = this
+    that.haslogin=that.$store.state.user.haslogin
+  },
+  methods:{
+    //弹出登录表单
+    showsignin:function(){
+      this.$store.commit('editsignin')
+    },
+    //弹出注册表单
+    showsignup:function(){
+      this.$store.commit('editsignup')
+    },
+  },
 }
 </script>
 
