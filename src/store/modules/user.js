@@ -1,6 +1,6 @@
 const user = {
 	state:{
-		haslogin: false,
+		haslogin: false,  //是否登录成功
 		hassignin: false, //是否出现登录的表单
         hassignup: false, //是否出现注册的表单
 		avatar:"", //头像URL
@@ -8,16 +8,17 @@ const user = {
 		password: "", //密码
 	},
 	mutations:{
-		increment(){
-			//state
+		editlogin(state,user){
+			state.haslogin=true
+			state.username=user.username
+			state.password=user.password
 		},
 		editsignin(state){
 			state.hassignin=!state.hassignin
 		},
 		editsignup(state){
 			state.hassignup=!state.hassignup
-		}
-
+		},
 	}
 }
 

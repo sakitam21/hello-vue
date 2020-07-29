@@ -37,7 +37,9 @@
     </div>
 
     <div class="user" v-else>
-      {{this.$store.state.user.username}}
+      <div class="usericon">
+        {{this.$store.state.user.username}}
+      </div>
     </div>
 
   </div>
@@ -53,12 +55,12 @@ export default{
   },
   data: function() {
     return {
-      haslogin:'', //是否已经登录
     }
   },
-  created: function(){
-    var that = this
-    that.haslogin=that.$store.state.user.haslogin
+  computed:{
+    haslogin:function(){
+      return this.$store.state.user.haslogin
+    }
   },
   methods:{
     //弹出登录表单
@@ -131,9 +133,9 @@ export default{
 }
 .topmenu .user{
   width: 24%;
-  height: 32px;
+  height: 48px;
   float: right;
-  margin-top: 8px;
+  padding: 8px 0;
   color: #999;
 }
 .user .list{
@@ -155,5 +157,18 @@ export default{
 .user .list:first-child{
   background-color: #008b8b;
   color: #fff;
+}
+.user .usericon{
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  font-size: 18px;
+  line-height: 32px;
+  float: right;
+  padding: 0 16px;
+  margin: 0 6px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  letter-spacing: 2px;
 }
 </style>

@@ -3,7 +3,6 @@
   <div class="sidebar">  
     <ul class="ul">
       <li class="list">
-        <!--以后在Logfile里面写开发日志，每天更新-->
         Logfile
       </li>
       <span class="divide"></span>

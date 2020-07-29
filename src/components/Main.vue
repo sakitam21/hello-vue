@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import TopMenu from '@/components/main/TopMenu.vue'
 //
 //import TopBar from '@/components/main/TopBar.vue'
@@ -124,6 +125,31 @@ export default {
       this.$store.commit('editsignup')
       this.username=''
       this.password=''
+    },
+    //登录事件
+    signIn:function(){
+      const that = this;
+      axios.post('/user/signin',{
+        username:that.username,
+        password:that.password
+      }).then(function(response){
+        //console.log(response.data)
+        if(response.data==true){
+          //登录成功
+          var user={
+            username:that.username,
+            password:that.password
+          }
+          that.$store.commit('editlogin',user);
+        }else{
+          alert("用户名或密码错误！")
+        }
+        that.cancelsignin();
+      }).catch(function(error){
+        console.log(error)
+        alert("登录失败！");
+        that.cancelsignin();
+      })
     },
   }
 }
