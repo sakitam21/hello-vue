@@ -24,11 +24,14 @@
         </div>
         <button>signin</button>
       </form>
+      <p>【username：“root”，password：“password”】</p>
+      <p>【username：“one”，password：“one”】</p>
+      <p>【username：“two”，password：“two”】</p>
     </div>
     <!--注册表单-->
     <div class="login" v-if="hassignup" v-on:click="cancelsignup">
       <form v-on:submit.prevent="signUp" class="loginform" v-on:click="loginform">
-        <h2>注册表单</h2>
+        <h2>注册表单(现不可用，未做数据持久化）</h2>
         <div class="inputItem">
           <label for="username">username</label>
           <input type="text" v-model="username" id="username">
