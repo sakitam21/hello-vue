@@ -1,10 +1,9 @@
 import Mock from 'mockjs'
-import boardlist from './board/boardlist'
-
-import users from './user/users'
-
 const domain = 'http://mockjs.com/api'
-//console.log(boardlist);
+
+import boardlist from './board/boardlist'
+import users from './user/users'
+import articles from './article/articles'
 
 Mock.mock(`${domain}/boardlist`,'get',boardlist)
 
@@ -20,3 +19,5 @@ Mock.mock(`${domain}/user/signin`,'post',function(options){
 	}
 	return isSignin
 })
+
+Mock.mock(`${domain}/article/articles`,'get',articles)

@@ -1,16 +1,19 @@
 let users = []
 
 users.push({
+	useris:0,
 	username:"root",
 	password:"password"
 })
 
 users.push({
+	userid:1,
 	username:"one",
 	password:"one"
 })
 
 users.push({
+	userid:2,
 	username:"two",
 	password:"two"
 })

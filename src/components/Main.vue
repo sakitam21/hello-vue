@@ -23,10 +23,10 @@
           <input type="text" v-model="password" id="password">
         </div>
         <button>signin</button>
+        <p>【username：“root”，password：“password”】</p>
+        <p>【username：“one”，password：“one”】</p>
+        <p>【username：“two”，password：“two”】</p>
       </form>
-      <p>【username：“root”，password：“password”】</p>
-      <p>【username：“one”，password：“one”】</p>
-      <p>【username：“two”，password：“two”】</p>
     </div>
     <!--注册表单-->
     <div class="login" v-if="hassignup" v-on:click="cancelsignup">
@@ -105,6 +105,18 @@ export default {
       username:'',
       password:'',
     }
+  },
+  created:function(){
+    var that = this
+    //使用axios获取所有的Article的内容
+    //然后映射到唯一的数据源Store上
+    axios.get('/article/articles')
+    .then(function(response){
+      //console.log(response.data)
+      that.$store.commit('initialArticles',response.data)
+    }).catch(function(error){
+      console.log(error)
+    })
   },
   computed:{
     hassignin:function(){ //是否弹出登录表单

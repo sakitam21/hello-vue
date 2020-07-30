@@ -4,6 +4,7 @@ const user = {
 		hassignin: false, //是否出现登录的表单
         hassignup: false, //是否出现注册的表单
 		avatar:"", //头像URL
+		userid:0,
 		username: "", //用户名
 		password: "", //密码
 	},
