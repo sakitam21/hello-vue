@@ -11,6 +11,7 @@ const user = {
 	mutations:{
 		editlogin(state,user){
 			state.haslogin=true
+			state.userid=user.userid
 			state.username=user.username
 			state.password=user.password
 		},

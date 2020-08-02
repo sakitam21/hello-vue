@@ -11,13 +11,16 @@ Mock.mock(`${domain}/user/signin`,'post',function(options){
 	var username= JSON.parse(options.body).username
 	var password= JSON.parse(options.body).password
 
-	var isSignin = false
+	//var isSignin = false
+	var user = {}
 	for(var i=0;i<users.length;i++){
 		var item=users[i]
-		if(item.username==username&&item.password==password)
-			isSignin = true
+		if(item.username==username&&item.password==password){
+			//isSignin = true
+			user = users[i]
+		}
 	}
-	return isSignin
+	return user
 })
 
 Mock.mock(`${domain}/article/articles`,'get',articles)

@@ -148,14 +148,16 @@ export default {
         username:that.username,
         password:that.password
       }).then(function(response){
-        //console.log(response.data)
-        if(response.data==true){
+        console.log(response.data)
+        if(response.data){
           //登录成功
           var user={
-            username:that.username,
-            password:that.password
+            userid:response.data.userid,
+            username:response.data.username,
+            password:response.data.password
           }
           that.$store.commit('editlogin',user);
+          //在登录之后需要确定哪些文章是已经登录的，需要多加一个属性isliked
         }else{
           alert("用户名或密码错误！")
         }

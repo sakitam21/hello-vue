@@ -1,19 +1,19 @@
 <template>
   <div class="column">
     <h1 style="text-align: center;">Column Component</h1>
-    <div class="articleItem" v-for="(article,index) in articles">
-    	<div class="articleTitle">
-    		{{article.article_title}}
-    	</div>
-    	<div class="articleAuthor">
-    		author:{{article.article_author}}
-    	</div>
-    	<div class="articleContent">
-    		{{article.article_content}}
-    	</div>
-    	<div v-bind:class="{like:true,liked:article.isliked&&haslogin}" v-on:click="likeArticle(index)">
-    		{{article.like_number}}
-    	</div>
+    <div class="articleItem" v-for="(article,index) in articles" v-bind:key="index">
+      <div class="articleTitle">
+        {{article.article_title}}
+      </div>
+      <div class="articleAuthor">
+        author:{{article.article_author}}
+      </div>
+      <div class="articleContent">
+        {{article.article_content}}
+      </div>
+      <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id,index)">
+        {{article.like_number}}
+      </div>
     </div>
   </div>
 </template>
@@ -22,34 +22,48 @@
 export default {
   name: 'Column',
   data:function(){
-  	return {
-  	}
+    return {
+    }
   },
   computed:{
-  	haslogin:function(){
-  		return this.$store.state.user.haslogin
-  	},
-  	articles:function(){
-  		return this.$store.state.article.articles
-  	}
+    haslogin:function(){
+      return this.$store.state.user.haslogin
+    }, 	
+    myliked:function(){
+      var userid = this.$store.state.user.userid
+      return this.$store.getters.myLikedArticles(userid)
+    },
+    articles:function(){
+      return this.$store.state.article.articles
+    }
   },
   methods:{
-  	likeArticle:function(index){
-  		//console.log(index)
-  		//点赞前需要确认是否已经登录
-  		if(this.$store.state.user.haslogin){
-  			//修改相应的state
-  			//需要把user_id,username,index都传过去（使用对象）
-  			var likemsg={
-  				userid:0,
-  				username:"root",
-  				index:index
-  			}
-  			this.$store.commit('likeArticle',likemsg)
-  		}else{
-  			alert("请先登录");
-  		}
-  	}
+    likeArticle:function(article_id,index){
+      //console.log(index)
+      //点赞前需要确认是否已经登录
+      if(this.$store.state.user.haslogin){
+		//修改相应的state
+        //需要把user_id,username,index,article_id,和是否已经点赞isliked都传过去（使用对象）
+        var isliked=false
+        if(this.myliked.indexOf(article_id)!=-1){
+          isliked=true
+        }
+        var likemsg={
+          user:{
+            userid:0,
+            username:"root",
+            password:"password",
+          },
+          index:index,
+          article_id:article_id,
+          isliked:isliked
+        }
+        this.$store.commit('likeArticle',likemsg)
+        console.log(this.$store.getters.myLikedArticles(0))
+      }else{
+        alert("请先登录");
+      }
+    },
   }
 }
 </script>
