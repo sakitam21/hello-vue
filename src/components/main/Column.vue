@@ -3,7 +3,9 @@
     <h1 style="text-align: center;">Column Component</h1>
     <div class="articleItem" v-for="(article,index) in articles" v-bind:key="index">
       <div class="articleTitle">
-        {{article.article_title}}
+        <router-link :to="{name:'columnitem',params:{columnid:index}}">
+          {{article.article_title}}
+        </router-link>
       </div>
       <div class="articleAuthor">
         author:{{article.article_author}}

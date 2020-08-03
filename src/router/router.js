@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 import Main from '@/components/Main.vue';
 import Index from '@/components/main/Index.vue';
 import Column from '@/components/main/Column.vue';
+import ColumnItem from '@/components/main/ColumnItem.vue';
 import C from '@/components/main/C.vue';
 
 /*
@@ -31,6 +32,12 @@ export default new VueRouter({
 					path:'column',
 					name:'column',
 					component: Column
+				},
+				{
+					//嵌套路由
+					path:'column/:columnid',
+					name:'columnitem',
+					component: ColumnItem
 				},
 				{
 					path:'list3',
