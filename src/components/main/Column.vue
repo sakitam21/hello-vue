@@ -2,10 +2,14 @@
   <div class="column">
     <h1 style="text-align: center;">Column Component</h1>
     <div class="articleItem" v-for="(article,index) in articles" v-bind:key="index">
-      <div class="articleTitle">
+      <div class="articleTitle" v-on:click="goColumnItem(index)">
+        <!--
         <router-link :to="{name:'columnitem',params:{columnid:index}}">
           {{article.article_title}}
         </router-link>
+      -->
+        <!--使用编程式的导航-->
+          {{article.article_title}}
       </div>
       <div class="articleAuthor">
         author:{{article.article_author}}
@@ -40,6 +44,11 @@ export default {
     }
   },
   methods:{
+    //跳转到专栏文章详情页
+    goColumnItem:function(index){
+      //编程式路由
+      this.$router.push({name:'columnitem',params:{columnid:index}})
+    },
     likeArticle:function(article_id,index){
       //console.log(index)
       //点赞前需要确认是否已经登录

@@ -12,8 +12,8 @@ for(let i=1;i<=10;i++){
 		article_title:"第"+i+"篇专栏文章",
 		article_author:users[0].username,
 		article_tag:[
-			articletags[i%2],
-			articletags[i%3]
+			articletags[0],
+			articletags[2]
 		],
 		article_date:Random.date(),
 		article_content:Random.csentence(200,500),
@@ -30,13 +30,15 @@ for(let i=1;i<=10;i++){
 				comment_id:1,
 				comment_content:Random.csentence(10,20),
 				userid:users[0].userid,
-				username:users[0].username
+				username:users[0].username,
+				comment_date:Random.date()
 			},
 			{
 				comment_id:2,
 				comment_content:Random.csentence(20,30),
 				userid:users[1].userid,
-				username:users[1].username
+				username:users[1].username,
+				comment_date:Random.date()
 			}
 		],
 		collect_number:Random.natural(0,5)
@@ -58,13 +60,14 @@ for(let i=11;i<=20;i++){
 		like_users:[
 			users[2],
 		],
-		comment_number:2,
+		comment_number:1,
 		comment_content:[
 			{
 				comment_id:1,
 				comment_content:Random.csentence(10,20),
 				userid:users[2].userid,
-				username:users[2].username
+				username:users[2].username,
+				comment_date:Random.date()
 			}
 		],
 		collect_number:Random.natural(0,5)

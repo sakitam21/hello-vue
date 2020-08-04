@@ -3,6 +3,7 @@ const article = {
 		articles:[],
 	},
 	getters:{
+		//获取我点赞的文章
 		myLikedArticles:(state)=>(userid)=>{
 			var myliked=[]
 			for(var i=0;i<state.articles.length;i++){
@@ -14,7 +15,12 @@ const article = {
 				}
 			}
 			return myliked;
-		}
+		},
+		//根据Id获取文章内容
+		getArticleByIndex:(state)=>(index)=>{
+			console.log(state.articles[index])
+			return state.articles[index];
+		},
 	},
 	mutations:{
 		initialArticles(state,articles){

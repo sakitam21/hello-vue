@@ -35,7 +35,7 @@ export default new VueRouter({
 				},
 				{
 					//嵌套路由
-					path:'column/:columnid',
+					path:'column/columnid=:columnid',
 					name:'columnitem',
 					component: ColumnItem
 				},
