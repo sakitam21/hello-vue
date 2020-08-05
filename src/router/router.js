@@ -7,6 +7,7 @@ import Main from '@/components/Main.vue';
 import Index from '@/components/main/Index.vue';
 import Column from '@/components/main/Column.vue';
 import ColumnItem from '@/components/main/ColumnItem.vue';
+import AddArticle from '@/components/main/AddArticle.vue';
 import C from '@/components/main/C.vue';
 
 /*
@@ -38,6 +39,11 @@ export default new VueRouter({
 					path:'column/columnid=:columnid',
 					name:'columnitem',
 					component: ColumnItem
+				},
+				{
+					path:'column/addarticle',
+					name:'addarticle',
+					component: AddArticle
 				},
 				{
 					path:'list3',

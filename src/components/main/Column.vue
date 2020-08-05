@@ -1,6 +1,11 @@
 <template>
   <div class="column">
     <h1 style="text-align: center;">Column Component</h1>
+    <div class="addArticle">
+      <router-link :to="{name:'addarticle'}">
+        AddArticle
+      </router-link>
+    </div>
     <div class="articleItem" v-for="(article,index) in articles" v-bind:key="index">
       <div class="articleTitle" v-on:click="goColumnItem(index)">
         <!--
@@ -83,6 +88,15 @@ export default {
 <style scoped>
 .column{
 	padding: 30px 8%;
+}
+.column .addArticle{
+  width: 120px;
+  height: 32px;
+  border: 1px solid #333;
+  text-align: center;
+  line-height: 32px;
+  margin: 10px auto;
+  border-radius: 5px;
 }
 .column .articleItem{
 	position: relative;
