@@ -41,7 +41,14 @@ export default{
 	},
 	methods:{
 		addArticle:function(){
-
+			//需要提交一个Action请求
+			var newArticle={
+				title:this.title,
+				checkedTags:this.checkedTags,
+				content:this.content,
+				date:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()
+			}
+			console.log(newArticle)
 		}
 	}
 }
