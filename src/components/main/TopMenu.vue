@@ -3,7 +3,7 @@
 
     <router-link :to="{name:'index'}">
       <div class="logo">
-        Async技术社区
+        <i>Async技术社区</i>
       </div>
     </router-link>
 
@@ -40,8 +40,19 @@
       <div class="usericon" v-on:click="showMyprofile">
         {{this.$store.state.user.username}}
       </div>
+      <!--需要有一个遮罩层mask-->
       <div class="profile" v-if="showprofile" >
-        profile
+        <ul>
+          <router-link :to="{name:'myarticle'}">
+          <li>我的文章</li>
+        </router-link>
+        <router-link :to="{name:'mylike'}">
+          <li>我的点赞</li>
+        </router-link>
+        <router-link :to="{name:'mycollect'}">
+          <li>我的收藏</li>
+        </router-link>
+        </ul>
       </div>
     </div>
 
@@ -146,6 +157,9 @@ export default{
   padding: 8px 0;
   color: #999;
 }
+.user{
+  position: relative;
+}
 .user .list{
   display: inline-block;
   vertical-align: top;
@@ -173,10 +187,29 @@ export default{
   font-size: 18px;
   line-height: 32px;
   float: right;
-  padding: 0 16px;
-  margin: 0 6px;
+  width: 180px;
   border: 1px solid #333;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   letter-spacing: 2px;
+  color: #333;
+}
+.user .profile{
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 160px;
+  border: 1px solid #333;
+  z-index: 200;
+  padding: 4px 10px;
+  background-color: #fff;
+  border-radius: 0 0 4px 4px;
+  color: #333;
+}
+
+.user .profile li{
+  list-style: none;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px dotted #333;
 }
 </style>
