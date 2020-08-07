@@ -66,7 +66,8 @@ export default{
 				like_users:[],
 				comment_number:0,
 				comment_content:[],
-				collect_number:0
+				collect_number:0,
+				collect_users:[]
 			}
 			//console.log(newarticle)
 			this.$store.commit('addArticle',newarticle)

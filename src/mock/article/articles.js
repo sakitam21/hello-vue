@@ -41,7 +41,11 @@ for(let i=1;i<=10;i++){
 				comment_date:Random.date()
 			}
 		],
-		collect_number:Random.natural(0,5)
+		collect_number:2,
+		collect_users:[
+			users[0],
+			users[1]
+		]
 	}
 	articles.push(article);
 }
@@ -70,7 +74,10 @@ for(let i=11;i<=20;i++){
 				comment_date:Random.date()
 			}
 		],
-		collect_number:Random.natural(0,5)
+		collect_number:1,
+		collect_users:[
+			users[2]
+		]
 	}
 	articles.push(article);
 }

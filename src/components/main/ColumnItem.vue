@@ -27,8 +27,8 @@
 				<p>{{article.article_content}}</p>
 			</div>
 			<div class="bottom">
-				<div class="item">赞{{article.like_number}}</div>
-				<div class="item">收藏{{article.collect_number}}</div>
+				<div v-bind:class="{item:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">赞{{article.like_number}}</div>
+				<div v-bind:class="{item:true,liked:haslogin&&mycollected.indexOf(article.article_id)!=-1}" v-on:click="collectArticle(article.article_id)">收藏{{article.collect_number}}</div>
 			</div>
 		</div>
 
@@ -48,13 +48,82 @@
 
 <script>
 export default{
-	name:"ColumnItem",
-	computed:{
-      article:function(){
-        var index = this.$route.params.columnid
-        return this.$store.getters.getArticleByIndex(index)
+  name:"ColumnItem",
+  computed:{
+	haslogin:function(){
+      return this.$store.state.user.haslogin
+    }, 	
+    myliked:function(){
+      var userid = this.$store.state.user.userid
+      console.log(this.$store.getters.myLikedArticles(userid))
+      return this.$store.getters.myLikedArticles(userid)
+    },
+    mycollected:function(){
+      var userid = this.$store.state.user.userid
+      console.log(this.$store.getters.myCollectedArticles(userid))
+      return this.$store.getters.myCollectedArticles(userid)
+    },
+    article:function(){
+      var index = this.$route.params.columnid
+      return this.$store.getters.getArticleByIndex(index)
+    },
+  },
+  methods:{
+	likeArticle:function(article_id){
+      //console.log(index)
+      //点赞前需要确认是否已经登录
+      var index=article_id-1
+      if(this.$store.state.user.haslogin){
+		//修改相应的state
+        //需要把user_id,username,index,article_id,和是否已经点赞isliked都传过去（使用对象）
+        var isliked=false
+        if(this.myliked.indexOf(article_id)!=-1){
+          isliked=true
+        }
+        var likemsg={
+          user:{
+            userid:0,
+            username:"root",
+            password:"password",
+          },
+          index:index,
+          article_id:article_id,
+          isliked:isliked
+        }
+        this.$store.commit('likeArticle',likemsg)
+        console.log(this.$store.getters.myLikedArticles(0))
+      }else{
+        alert("请先登录");
       }
-	},
+    },
+    collectArticle:function(article_id){
+      //console.log(index)
+      //点赞前需要确认是否已经登录
+      var index=article_id-1
+      if(this.$store.state.user.haslogin){
+		//修改相应的state
+        //需要把user_id,username,index,article_id,和是否已经点赞isliked都传过去（使用对象）
+        var iscollected=false
+        if(this.mycollected.indexOf(article_id)!=-1){
+          iscollected=true
+        }
+        var collectmsg={
+          user:{
+            userid:0,
+            username:"root",
+            password:"password",
+          },
+          index:index,
+          article_id:article_id,
+          iscollected:iscollected
+        }
+        this.$store.commit('collectArticle',collectmsg)
+        //console.log(this.$store.getters.myCollectedArticles(0))
+      }else{
+        alert("请先登录");
+      }
+    },
+  },
 }
 </script>
 
@@ -157,6 +226,10 @@ export default{
     line-height: 32px;
     border-radius: 5px;
     letter-spacing: 4px;
+}
+
+.articlebody .bottom .liked{
+	border: 2px solid #008b8b;
 }
 
 .columnitem .comment{

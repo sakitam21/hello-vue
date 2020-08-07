@@ -22,7 +22,7 @@
       <div class="articleContent">
         {{article.article_content}}
       </div>
-      <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id,index)">
+      <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
         {{article.like_number}}
       </div>
     </div>
@@ -54,8 +54,9 @@ export default {
       //编程式路由
       this.$router.push({name:'columnitem',params:{columnid:index}})
     },
-    likeArticle:function(article_id,index){
+    likeArticle:function(article_id){
       //console.log(index)
+      var index=article_id-1
       //点赞前需要确认是否已经登录
       if(this.$store.state.user.haslogin){
 		//修改相应的state

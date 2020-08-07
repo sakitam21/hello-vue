@@ -16,6 +16,20 @@ const article = {
 			}
 			return myliked;
 		},
+		//获取我收藏的文章
+		myCollectedArticles:(state)=>(userid)=>{
+			var mycollected=[]
+			for(var i=0;i<state.articles.length;i++){
+				for(var j=0;j<state.articles[i].collect_users.length;j++){
+					if(state.articles[i].collect_users[j].userid==userid){
+						mycollected.push(state.articles[i].article_id);
+						break;
+					}
+				}
+			}
+			return mycollected;
+		},
+
 		//根据Id获取文章内容
 		getArticleByIndex:(state)=>(index)=>{
 			console.log(state.articles[index])
@@ -53,9 +67,29 @@ const article = {
 			//state.articles[index].like_number++
 		},
 
+		//收藏
+		collectArticle(state,collectmsg){
+			console.log(collectmsg)
+			//需要修改相应的收藏数量以及收藏人
+			//判断该文章是否已经被该登录人收藏
+			if(collectmsg.iscollected){
+				//已经收藏了
+				state.articles[collectmsg.index].collect_number--
+				for(var i=0;i<state.articles[collectmsg.index].collect_users.length;i++){
+					if(state.articles[collectmsg.index].collect_users[i].userid==collectmsg.user.userid){
+						state.articles[collectmsg.index].collect_users.splice(i,1)
+						break;
+					}
+				}
+			} else {
+				//没收藏
+				state.articles[collectmsg.index].collect_number++
+				state.articles[collectmsg.index].collect_users.push(collectmsg.user)
+			}
+		},
+
 		//添加文章
 		addArticle(state,newarticle){
-			//console.log(...state.articles,newarticle)
 			state.articles=[...state.articles,newarticle]
 		}
 	},
