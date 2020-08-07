@@ -5,7 +5,7 @@
         <i>Async技术社区</i>
       </div>
     </router-link>
-    
+
     <h1>Profile</h1>
     <div>
       <ul>
@@ -21,6 +21,7 @@
       </ul>
     </div>
 
+    <!--上面三个组件继承自同一个ArticleList的组件，使用props传递参数-->
     <hr/>
     <div>
       <router-view></router-view>

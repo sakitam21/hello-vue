@@ -41,6 +41,7 @@
         {{this.$store.state.user.username}}
       </div>
       <!--需要有一个遮罩层mask-->
+      <!--需要阻止profile的事件冒泡-->
       <div class="profile" v-if="showprofile" >
         <ul>
           <router-link :to="{name:'myarticle'}">
