@@ -37,8 +37,11 @@
     </div>
 
     <div class="user" v-else>
-      <div class="usericon">
+      <div class="usericon" v-on:click="showMyprofile">
         {{this.$store.state.user.username}}
+      </div>
+      <div class="profile" v-if="showprofile" >
+        profile
       </div>
     </div>
 
@@ -55,6 +58,7 @@ export default{
   },
   data: function() {
     return {
+      showprofile:false,
     }
   },
   computed:{
@@ -70,6 +74,10 @@ export default{
     //弹出注册表单
     showsignup:function(){
       this.$store.commit('editsignup')
+    },
+    //显示我的个人信息
+    showMyprofile:function(){
+      this.showprofile=!this.showprofile
     },
   },
 }
