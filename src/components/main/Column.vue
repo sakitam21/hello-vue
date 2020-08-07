@@ -1,7 +1,7 @@
 <template>
   <div class="column">
     <h1 style="text-align: center;">Column Component</h1>
-    <div class="addArticle">
+    <div class="addArticle" v-if="haslogin">
       <router-link :to="{name:'addarticle'}">
         AddArticle
       </router-link>

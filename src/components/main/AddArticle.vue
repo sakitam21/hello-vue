@@ -9,12 +9,16 @@
         </div>
         <div class="inputItem">
           <p>选择标签</p>
-          <input type="checkbox" id="web" value="WEB" v-model="checkedTags">
-          <label for="web">web</label>
-          <input type="checkbox" id="html5" value="HTML5" v-model="checkedTags">
+          <input type="checkbox" id="前端" value="0" v-model="checkedTags">
+          <label for="前端">前端</label>
+          <input type="checkbox" id="html5" value="1" v-model="checkedTags">
           <label for="html5">html5</label>
-          <input type="checkbox" id="css3" value="CSS3" v-model="checkedTags">
+          <input type="checkbox" id="css3" value="2" v-model="checkedTags">
           <label for="css3">css3</label>
+          <input type="checkbox" id="vue" value="3" v-model="checkedTags">
+          <label for="vue">vue</label>
+          <input type="checkbox" id="react" value="4" v-model="checkedTags">
+          <label for="react">react</label>
         </div>
         <div class="inputItem">
           <label for="content">Content</label>
@@ -30,6 +34,7 @@
 </template>
 
 <script>
+import articletags from '../../mock/article/articletags.js'
 export default{
 	name:"AddArticle",
 	data:function(){
@@ -42,13 +47,38 @@ export default{
 	methods:{
 		addArticle:function(){
 			//需要提交一个Action请求
-			var newArticle={
-				title:this.title,
-				checkedTags:this.checkedTags,
-				content:this.content,
-				date:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()
+			var article_id = this.$store.getters.getArticleNum+1
+			var username = this.$store.state.user.username
+			var article_tag=[]
+			//console.log(articletags);
+			for(let i=0;i<this.checkedTags.length;i++){
+				let index = parseInt(this.checkedTags[i])
+				article_tag.push(articletags[index])
 			}
-			console.log(newArticle)
+			var newarticle={
+				article_id:article_id,
+				article_title:this.title,
+				article_author:username,
+				article_tag:article_tag,
+				article_date:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
+				article_content:this.content,
+				like_number:0,
+				like_users:[],
+				comment_number:0,
+				comment_content:[],
+				collect_number:0
+			}
+			//console.log(newarticle)
+			this.$store.commit('addArticle',newarticle)
+			if(this.$store.getters.getArticleNum==article_id){
+				//添加成功
+				alert("文章提交成功！")
+			}else{
+				//添加失败
+				alert("文章提交失败！")
+			}
+			//跳转页面
+			this.$router.push({name:'column'})
 		}
 	}
 }

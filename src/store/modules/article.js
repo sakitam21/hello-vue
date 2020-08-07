@@ -21,12 +21,17 @@ const article = {
 			console.log(state.articles[index])
 			return state.articles[index];
 		},
+
+		getArticleNum:state=>{
+			return state.articles.length
+		}
 	},
 	mutations:{
 		initialArticles(state,articles){
 			state.articles=[...articles]
 		},
 
+		//点赞
 		likeArticle(state,likemsg){
 			console.log(likemsg)
 			//需要修改相应的点赞数量以及点赞人
@@ -46,8 +51,14 @@ const article = {
 				state.articles[likemsg.index].like_users.push(likemsg.user)
 			}
 			//state.articles[index].like_number++
+		},
+
+		//添加文章
+		addArticle(state,newarticle){
+			//console.log(...state.articles,newarticle)
+			state.articles=[...state.articles,newarticle]
 		}
-	}
+	},
 }
 
 export default article;

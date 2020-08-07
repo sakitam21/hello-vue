@@ -3,7 +3,7 @@
 
     <router-link :to="{name:'index'}">
       <div class="logo">
-        Hello-Vue
+        Async技术社区
       </div>
     </router-link>
 
@@ -78,15 +78,15 @@ export default{
 <style scoped>
 .topmenu{
   height: 50px;
-  width: 88%;
+  width: 92%;
   border-top: 2px solid #008b8b;
   border-bottom: 2px solid #008b8b;
-  padding: 0 6%;
+  padding: 0 4%;
 }
 .topmenu .logo{
   height: 46px;
   line-height: 46px;
-  width: 12%;
+  width: 14%;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -96,7 +96,7 @@ export default{
 .topmenu .ul{
   height: 32px;
   line-height: 32px;
-  width: 22%;
+  width: 20%;
   font-weight: bold;
   margin: 8px 0;
   float: left;
