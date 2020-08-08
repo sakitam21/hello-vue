@@ -23,6 +23,11 @@
           问答
         </li>
       </router-link>
+      <router-link :to="{name:'download'}">
+        <li class="list">
+          资源下载
+        </li>
+      </router-link>
     </ul>
 
     <div class="search">
@@ -116,7 +121,7 @@ export default{
 .topmenu .ul{
   height: 32px;
   line-height: 32px;
-  width: 20%;
+  width: 26%;
   font-weight: bold;
   margin: 8px 0;
   float: left;
@@ -144,7 +149,7 @@ export default{
   color: #008b8b !important;
 }
 .topmenu .search{
-  width: 30%;
+  width: 28%;
   height: 40px;
   margin-top: 3px;
   margin-left: 4%;

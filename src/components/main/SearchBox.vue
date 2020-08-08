@@ -2,7 +2,7 @@
   <div class="searchbox">
     <div class="formbox">
       <form v-on:submit.prevent="alertKeyWord" class="myform">
-        <input type="text" v-model="keyword" placeholder="搜索关键字">
+        <input type="text" v-model="keyword" placeholder="请输入搜索关键字">
 		<button>Search</button>
       </form>
 	</div>
@@ -42,7 +42,7 @@ export default{
 	height: 32px;
 	width: 100%;
 	margin: 3px 0;
-	border: 1px solid #999;
+	border: 1px solid #008b8b;
 	border-radius: 8px;
 }
 
@@ -65,7 +65,7 @@ export default{
 	padding: 0 10px;
 	border:none;
 	float: right;
-	background-color: #999;
+	background-color: #008b8b;
 	color: #fff;
 }
 </style>

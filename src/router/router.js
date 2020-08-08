@@ -15,6 +15,10 @@ import AddArticle from '@/components/main/AddArticle.vue';
 import Question from '@/components/main/Question.vue';
 import QuestionItem from '@/components/main/QuestionItem.vue';
 
+//resource module
+import Download from '@/components/main/Download.vue';
+
+//user module
 import Profile from '@/components/profile/Profile.vue';
 import MyArticle from '@/components/profile/MyArticle.vue';
 import MyLike from '@/components/profile/MyLike.vue';
@@ -64,6 +68,11 @@ export default new VueRouter({
 					path:'question/questionid=:questionid',
 					name:'questionitem',
 					component: QuestionItem
+				},
+				{
+					path:'download',
+					name:'download',
+					component:Download
 				},
 			]
 		},
