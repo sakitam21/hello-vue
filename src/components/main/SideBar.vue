@@ -3,20 +3,15 @@
   <div class="sidebar">  
     <ul class="ul">
       <li class="list">
-        Logfile
+        我的文章
       </li>
       <span class="divide"></span>
       <li class="list">
-        <span class="iconfont icon-guojiapitchon"></span>&nbsp;Country
+        我的喜欢
       </li>
       <span class="divide"></span>
       <li class="list">
-        <span class="iconfont icon-help"></span>&nbsp;Help
-      </li>
-      <span class="divide"></span>
-      <li class="list">
-        <!--需要使用百度map API-->
-        <span class="iconfont icon-dizhi"></span>&nbsp;Location
+        我的收藏
       </li>
     </ul>
   </div>

@@ -1,11 +1,9 @@
 import Mock from 'mockjs'
 const domain = 'http://mockjs.com/api'
 
-import boardlist from './board/boardlist'
 import users from './user/users'
 import articles from './article/articles'
-
-Mock.mock(`${domain}/boardlist`,'get',boardlist)
+import questions from './question/questions'
 
 Mock.mock(`${domain}/user/signin`,'post',function(options){
 	var username= JSON.parse(options.body).username
@@ -24,3 +22,5 @@ Mock.mock(`${domain}/user/signin`,'post',function(options){
 })
 
 Mock.mock(`${domain}/article/articles`,'get',articles)
+
+Mock.mock(`${domain}/question/questions`,'get',questions)

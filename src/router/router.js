@@ -5,11 +5,15 @@ Vue.use(VueRouter)
 
 import Main from '@/components/Main.vue';
 import Index from '@/components/main/Index.vue';
+
+//column module
 import Column from '@/components/main/Column.vue';
 import ColumnItem from '@/components/main/ColumnItem.vue';
 import AddArticle from '@/components/main/AddArticle.vue';
-import C from '@/components/main/C.vue';
 
+//question module
+import Question from '@/components/main/Question.vue';
+import QuestionItem from '@/components/main/QuestionItem.vue';
 
 import Profile from '@/components/profile/Profile.vue';
 import MyArticle from '@/components/profile/MyArticle.vue';
@@ -52,9 +56,14 @@ export default new VueRouter({
 					component: AddArticle
 				},
 				{
-					path:'list3',
-					name:'list3',
-					component: C
+					path:'question',
+					name:'question',
+					component: Question
+				},
+				{
+					path:'question/questionid=:questionid',
+					name:'questionitem',
+					component: QuestionItem
 				},
 			]
 		},

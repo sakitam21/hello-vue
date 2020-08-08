@@ -46,28 +46,7 @@
 
     <!--{{this.$store.state}}-->
 
-    <!--确定登陆的基本信息，诸如日期、地区、国家，以及对于该网站所需要的Help-->
-    <!--此类信息在登入网站时会自动获取并更新-->
-    <!--<SideBar />
-
-    <div class="content">
-      <SearchBox /> 
-      <Atlas />
-
-      <div class="info">
-        <div class="left">
-          <Board />
-        </div>
-        <div class="right">
-          <Profile />
-        </div>
-      </div>
-
-      <Notice />
-    </div>
-
-    <Footer />
-    -->
+    <Footer></Footer>
 
   </div>
 </template>
@@ -75,30 +54,13 @@
 <script>
 import axios from 'axios'
 import TopMenu from '@/components/main/TopMenu.vue'
-//
-//import TopBar from '@/components/main/TopBar.vue'
-//import SideBar from '@/components/main/SideBar.vue'
-//import SearchBox from '@/components/main/SearchBox.vue'
-//import Atlas from '@/components/main/Atlas.vue'
-//import Board from '@/components/main/Board.vue'
-//import Menu from '@/components/main/Menu.vue'
-//import Profile from '@/components/main/Profile.vue'
-//import Notice from '@/components/main/Notice.vue'
-//import Footer from '@/components/main/Footer.vue'
+import Footer from '@/components/main/Footer.vue'
 
 export default {
   name: 'Main',
   components: {
     TopMenu,
-    //TopBar,
-    //SideBar,
-    //SearchBox,
-    //Atlas,
-    //Board,
-    //Menu,
-    //Profile,
-    //Notice,
-    //Footer,
+    Footer,
   },
   data:function(){
     return {
@@ -114,6 +76,15 @@ export default {
     .then(function(response){
       //console.log(response.data)
       that.$store.commit('initialArticles',response.data)
+    }).catch(function(error){
+      console.log(error)
+    })
+
+    axios.get('/question/questions')
+    .then(function(response){
+      console.log(response.data)
+      //需要映射到question module
+      that.$store.commit('initialQuestions',response.data)
     }).catch(function(error){
       console.log(error)
     })

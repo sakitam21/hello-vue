@@ -18,9 +18,9 @@
           专栏
         </li>
       </router-link>
-      <router-link :to="{name:'list3'}">
+      <router-link :to="{name:'question'}">
         <li class="list">
-          LIST3
+          问答
         </li>
       </router-link>
     </ul>
