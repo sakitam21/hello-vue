@@ -1,10 +1,14 @@
 <template>
   <div class="questionItem">
     <h1>QuestionItem</h1>
-    
+
     <div class="header">
       <div class="author">{{question.question_author}}</div>
-      <div class="date">{{question.question_date}}</div>
+      <div class="date">发表于{{question.question_date}}</div>
+    </div>
+
+    <div class="tags">
+      <div class="tagitem" v-for="(tag,index) in question.question_tag" v-bind:key="index">{{tag.tag_name}}</div>
     </div>
 
     <div class="content">
@@ -47,5 +51,40 @@ export default{
 <style scoped>
 .questionItem{
 	padding: 30px 8%;
+}
+
+.questionItem .header{
+	width:100%;
+	height: 40px;
+	line-height: 40px;
+}
+.questionItem .header .author{
+	padding: 0 30px;
+	height: 40px;
+	color: #008b8b;
+	font-size: 22px;
+	float: left;
+}
+.questionItem .header .date{
+	padding: 0 30px;
+	height: 40px;
+	float: left;
+}
+.questionItem .tags{
+	padding-left: 30px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.questionItem .tags .tagitem{
+	width: 56px;
+	height: 30px;
+	float: left;
+	margin-right: 10px;
+	background-color: rgba(153,204,204,0.2);
+	border-radius: 4px;
+	line-height: 30px;
+	text-align: center;
+	color: #008b8b;
 }
 </style>
