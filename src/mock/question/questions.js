@@ -20,14 +20,14 @@ for(let i=1;i<=5;i++){
 		answer_content:[
 			{
 				answer_id:1,
-				answer_content:Random.csentence(20,30),
+				answer_content:Random.csentence(60,80),
 				userid:users[0].userid,
 				username:users[0].username,
 				answer_date:Random.date()
 			},
 			{
 				answer_id:2,
-				answer_content:Random.csentence(30,50),
+				answer_content:Random.csentence(100,120),
 				userid:users[2].userid,
 				username:users[2].username,
 				answer_date:Random.date()

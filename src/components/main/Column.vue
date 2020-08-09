@@ -136,12 +136,12 @@ export default {
 }
 .articleItem .articleContent{
 	width: 100%;
-    height: 40px;
-    color: #333;
-    background: white;
-    position: relative;
-    overflow: hidden;
-    line-height: 20px;
+  height: 40px;
+  color: #333;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  line-height: 20px;
 }
 .articleItem .articleContent:after{
 	content: "..."; 

@@ -18,6 +18,11 @@ import store from './store/store.js'
 
 axios.defaults.baseURL = 'http://mockjs.com/api'
 
+//路由跳转后回到顶部
+router.afterEach((to,from,next) => { // eslint-disable-line no-unused-vars
+    window.scrollTo(0,0);
+});
+
 Vue.config.productionTip = false
 
 new Vue({
