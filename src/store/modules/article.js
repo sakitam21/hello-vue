@@ -91,8 +91,18 @@ const article = {
 		//添加文章
 		addArticle(state,newarticle){
 			state.articles=[...state.articles,newarticle]
-		}
+		},
+
+		//写评论
+		writeComment(state,comment){
+			let article_id=comment.article_id
+			let comment_content=comment.comment_content
+			state.articles[article_id].comment_content.push(comment_content)
+			state.articles[article_id].comment_number= state.articles[article_id].comment_content.length
+		},
 	},
+
+
 }
 
 export default article;

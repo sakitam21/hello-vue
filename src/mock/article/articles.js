@@ -6,7 +6,7 @@ import articletags from './articletags.js'
 
 let articles = []
 
-for(let i=1;i<=10;i++){
+for(let i=0;i<10;i++){
 	let article ={
 		article_id:i,
 		article_title:"第"+i+"篇专栏文章",
@@ -49,7 +49,7 @@ for(let i=1;i<=10;i++){
 	}
 	articles.push(article);
 }
-for(let i=11;i<=20;i++){
+for(let i=10;i<20;i++){
 	let article ={
 		article_id:i,
 		article_title:"第"+i+"篇专栏文章",

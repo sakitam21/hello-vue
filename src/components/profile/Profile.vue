@@ -6,7 +6,10 @@
       </div>
     </router-link>
 
-    <h1>Profile</h1>
+    <div class="header">
+      <h1>Profile</h1>
+    </div>
+    
     <div>
       <ul>
         <router-link :to="{name:'myarticle'}">
@@ -38,5 +41,10 @@ export default{
 <style scoped>
 .profile{
 	width: 100%;
+}
+.profile .header{
+  padding: 0 30px;
+  height: 80px;
+  line-height: 80px;
 }
 </style>

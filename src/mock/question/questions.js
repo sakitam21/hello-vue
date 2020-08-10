@@ -6,7 +6,7 @@ import articletags from '../article/articletags.js'
 
 let questions = []
 
-for(let i=1;i<=5;i++){
+for(let i=0;i<6;i++){
 	let question = {
 		question_id:i,
 		question_author:users[1].username,
@@ -38,7 +38,7 @@ for(let i=1;i<=5;i++){
 	questions.push(question)
 }
 
-for(let i=6;i<=10;i++){
+for(let i=6;i<10;i++){
 	let question = {
 		question_id:i,
 		question_author:users[0].username,

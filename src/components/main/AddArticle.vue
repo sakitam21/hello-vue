@@ -47,7 +47,7 @@ export default{
 	methods:{
 		addArticle:function(){
 			//需要提交一个Action请求
-			var article_id = this.$store.getters.getArticleNum+1
+			var article_id = this.$store.getters.getArticleNum
 			var username = this.$store.state.user.username
 			var article_tag=[]
 			//console.log(articletags);
@@ -71,7 +71,7 @@ export default{
 			}
 			//console.log(newarticle)
 			this.$store.commit('addArticle',newarticle)
-			if(this.$store.getters.getArticleNum==article_id){
+			if(this.$store.getters.getArticleNum==article_id+1){
 				//添加成功
 				alert("文章提交成功！")
 			}else{
