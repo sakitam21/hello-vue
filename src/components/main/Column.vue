@@ -6,37 +6,71 @@
         AddArticle
       </router-link>
     </div>
-    <div class="articleItem" v-for="(article,index) in articles" v-bind:key="index">
-      <div class="articleTitle" v-on:click="goColumnItem(index)">
-        <!--
-        <router-link :to="{name:'columnitem',params:{columnid:index}}">
+
+    <div class="allTags">
+      <ul>
+        <!--在前端用函数分类-->
+        <li v-on:click="allArticles" v-bind:class="{tagitem:true,lightTag:currentTag==-1}">全部</li>
+        <li v-for="(tag,index) in articletags" v-bind:key="index" v-on:click="classifyArticle(tag.tag_id)" v-bind:class="{tagitem:true,lightTag:currentTag==index}">
+          {{tag.tag_name}}
+        </li>
+      </ul>
+    </div>
+
+    <div v-if="!isclassify">
+      <div class="articleItem" v-for="(article,index) in articles" v-bind:key="index">
+        <div class="articleTitle" v-on:click="goColumnItem(index)">
+          <!--使用编程式的导航-->
           {{article.article_title}}
-        </router-link>
-      -->
-        <!--使用编程式的导航-->
-          {{article.article_title}}
-      </div>
-      <div class="articleAuthor">
-        author:{{article.article_author}}
-      </div>
-      <div class="articleContent">
-        {{article.article_content}}
-      </div>
-      <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
-        {{article.like_number}}
+        </div>
+        <div class="articleAuthor">
+          author:{{article.article_author}}
+        </div>
+        <div class="articleContent">
+          {{article.article_content}}
+        </div>
+        <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
+          {{article.like_number}}
+        </div>
       </div>
     </div>
+    
+    <div v-else>
+      <div class="articleItem" v-for="(article,index) in classifyArticles" v-bind:key="index">
+        <div class="articleTitle" v-on:click="goColumnItem(article.article_id)">
+          {{article.article_title}}
+        </div>
+        <div class="articleAuthor">
+          author:{{article.article_author}}
+        </div>
+        <div class="articleContent">
+          {{article.article_content}}
+        </div>
+        <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
+          {{article.like_number}}
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
+import articletags from '../../mock/article/articletags.js'
 export default {
   name: 'Column',
   data:function(){
     return {
+      articletags:articletags, //所有的分类标签
+      isclassify:false, //是否分类
+      newArticles:[], //分类后的文章数组
+      currentTag: -1,//当前标签索引
     }
   },
   computed:{
+    classifyArticles:function(){
+      return this.newArticles
+    },
     haslogin:function(){
       return this.$store.state.user.haslogin
     }, 	
@@ -59,7 +93,7 @@ export default {
       var index=article_id-1
       //点赞前需要确认是否已经登录
       if(this.$store.state.user.haslogin){
-		//修改相应的state
+        //修改相应的state
         //需要把user_id,username,index,article_id,和是否已经点赞isliked都传过去（使用对象）
         var isliked=false
         if(this.myliked.indexOf(article_id)!=-1){
@@ -81,6 +115,31 @@ export default {
         alert("请先登录");
       }
     },
+
+    //显示全部文章
+    allArticles:function(){
+      this.isclassify=false
+      this.currentTag=-1
+    },
+
+    //显示分类文章
+    classifyArticle:function(tag_id){
+      //alert(tag_id);
+      let allArticles=this.articles
+      this.newArticles = []
+      for(let i=0;i<allArticles.length;i++){
+        for(let j=0;j<allArticles[i].article_tag.length;j++){
+          if(allArticles[i].article_tag[j].tag_id==tag_id){
+            this.newArticles.push(allArticles[i])
+            break;
+          }
+        }
+      }
+      console.log(this.newArticles);
+      this.isclassify=true
+      this.currentTag=tag_id
+    },
+
   }
 }
 </script>
@@ -98,6 +157,27 @@ export default {
   line-height: 32px;
   margin: 10px auto;
   border-radius: 5px;
+}
+.column .allTags{
+  margin: 30px auto;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.allTags .tagitem{
+  display: inline-block;
+  padding: 0 30px;
+  height: 30px;
+  margin-right: 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 5px;
+  vertical-align: top;
+}
+.allTags .lightTag{
+  background-color: rgba(153,204,204,0.2);
+  color: #008b8b;
 }
 .column .articleItem{
 	position: relative;

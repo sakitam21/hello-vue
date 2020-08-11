@@ -58,6 +58,7 @@
         <router-link :to="{name:'mycollect'}">
           <li>我的收藏</li>
         </router-link>
+        <li style="text-align: center;color: #008b8b;">注销</li>
         </ul>
       </div>
     </div>
