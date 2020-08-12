@@ -6,14 +6,14 @@
       <div class="sidebar">
         <ul>
           <li class="title">分类</li>
-          <li class="list" value="0" v-on:click="getArticle">近期点赞最多</li>
-          <li class="list" value="1" v-on:click="getArticle">近期收藏最多</li>
-          <li class="list" value="2" v-on:click="getArticle">近期评论最多</li>
+          <li v-bind:class="{list:true,lighted:tag==0}" value="0" v-on:click="getArticle">近期点赞最多</li>
+          <li v-bind:class="{list:true,lighted:tag==1}" value="1" v-on:click="getArticle">近期收藏最多</li>
+          <li v-bind:class="{list:true,lighted:tag==2}" value="2" v-on:click="getArticle">近期评论最多</li>
         </ul>
         <ul>
           <li class="title">标签</li>
-          <li v-for="(tag,index) in articletags" v-bind:key="index" class="list" v-bind:value="index+3" v-on:click="getArticle">
-          {{tag.tag_name}}
+          <li v-for="(tagitem,index) in articletags" v-bind:key="index" v-bind:value="index+3" v-bind:class="{list:true,lighted:tag==index+3}" v-on:click="getArticle">
+          {{tagitem.tag_name}}
           </li>
         </ul>
       </div>
@@ -44,20 +44,21 @@ export default {
   name: 'Index',
   data:function(){
     return {
-      articletags:articletags
+      articletags:articletags,
+      tag: 0,
     }
   },
   computed:{
     articles:function(){
-      return this.$store.state.article.articles
+      return this.$store.getters.getArticlesByTag(this.tag)
     }
   },
   methods:{
     getArticle:function(event){
       //获取的是点击的list的value
-      //let value = event.target.value
-      alert(event.target.value);
-      //commit一个mutations
+      let tag = event.target.value
+      this.tag=tag
+      //console.log(this.tag)
     },
   }
 }
@@ -88,6 +89,10 @@ export default {
 }
 .sidebar .list{
 	border-bottom: 1px dotted #ccc;
+}
+
+.sidebar .lighted{
+	color: #008b8b;
 }
 .sidebar li{
 	list-style: none;

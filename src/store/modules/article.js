@@ -36,9 +36,97 @@ const article = {
 			return state.articles[index];
 		},
 
+		//获取文章数量
 		getArticleNum:state=>{
 			return state.articles.length
-		}
+		},
+
+		//根据分类索引获取文章
+		getArticlesByTag:(state)=>(tag)=>{
+			if(tag==-1){
+				//全部文章
+				return state.articles
+			}else if(tag==0){
+				//近期点赞最多
+				return state.articles
+			}else if(tag==1){
+				//近期收藏最多
+				return state.articles
+			}else if(tag==2){
+				//近期评论最多
+				return state.articles
+			}else if(tag==3){
+              //前端
+              let allArticles=state.articles
+              let tag_id=0
+              let newArticles = []
+              for(let i=0;i<allArticles.length;i++){
+                for(let j=0;j<allArticles[i].article_tag.length;j++){
+                  if(allArticles[i].article_tag[j].tag_id==tag_id){
+                    newArticles.push(allArticles[i])
+                    break;
+                  }
+                }
+              }
+              return newArticles;
+			}else if(tag==4){
+				//html5
+              let allArticles=state.articles
+              let tag_id=1
+              let newArticles = []
+              for(let i=0;i<allArticles.length;i++){
+                for(let j=0;j<allArticles[i].article_tag.length;j++){
+                  if(allArticles[i].article_tag[j].tag_id==tag_id){
+                    newArticles.push(allArticles[i])
+                    break;
+                  }
+                }
+              }
+              return newArticles;
+			}else if(tag==5){
+              //css3
+              let allArticles=state.articles
+              let tag_id=2
+              let newArticles = []
+              for(let i=0;i<allArticles.length;i++){
+                for(let j=0;j<allArticles[i].article_tag.length;j++){
+                  if(allArticles[i].article_tag[j].tag_id==tag_id){
+                    newArticles.push(allArticles[i])
+                    break;
+                  }
+                }
+              }
+              return newArticles;
+			}else if(tag==6){
+				//vue
+              let allArticles=state.articles
+              let tag_id=3
+              let newArticles = []
+              for(let i=0;i<allArticles.length;i++){
+                for(let j=0;j<allArticles[i].article_tag.length;j++){
+                  if(allArticles[i].article_tag[j].tag_id==tag_id){
+                    newArticles.push(allArticles[i])
+                    break;
+                  }
+                }
+              }
+              return newArticles;
+			}else if(tag==7){
+				//react
+              let allArticles=state.articles
+              let tag_id=4
+              let newArticles = []
+              for(let i=0;i<allArticles.length;i++){
+                for(let j=0;j<allArticles[i].article_tag.length;j++){
+                  if(allArticles[i].article_tag[j].tag_id==tag_id){
+                    newArticles.push(allArticles[i])
+                    break;
+                  }
+                }
+              }
+              return newArticles;
+			}
+		},
 	},
 	mutations:{
 		initialArticles(state,articles){
@@ -100,6 +188,7 @@ const article = {
 			state.articles[article_id].comment_content.push(comment_content)
 			state.articles[article_id].comment_number= state.articles[article_id].comment_content.length
 		},
+
 	},
 
 
