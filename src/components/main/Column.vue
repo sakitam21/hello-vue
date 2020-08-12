@@ -1,11 +1,6 @@
 <template>
   <div class="column">
     <h1>Column Component</h1>
-    <div class="addArticle" v-if="haslogin">
-      <router-link :to="{name:'addarticle'}">
-        AddArticle
-      </router-link>
-    </div>
 
     <div class="allTags">
       <ul>
@@ -15,6 +10,12 @@
           {{tag.tag_name}}
         </li>
       </ul>
+    </div>
+
+    <div class="addArticle" v-if="haslogin">
+      <router-link :to="{name:'addarticle'}">
+        AddArticle
+      </router-link>
     </div>
 
     <div v-if="!isclassify">
@@ -171,7 +172,7 @@ export default {
   height: 30px;
   margin-right: 20px;
   background-color: #f0f0f0;
-  color: #333;
+  color: #999;
   border-radius: 5px;
   vertical-align: top;
 }
