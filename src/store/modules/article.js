@@ -3,11 +3,22 @@ const article = {
 		articles:[],
 	},
 	getters:{
+		//获取我的文章
+		myArticles:(state)=>(username)=>{
+			var myarticles=[]
+			for(let i=0;i<state.articles.length;i++){
+				if(state.articles[i].article_author==username){
+					myarticles.push(state.articles[i])
+				}
+			}
+			return myarticles;
+		},
+
 		//获取我点赞的文章
 		myLikedArticles:(state)=>(userid)=>{
 			var myliked=[]
-			for(var i=0;i<state.articles.length;i++){
-				for(var j=0;j<state.articles[i].like_users.length;j++){
+			for(let i=0;i<state.articles.length;i++){
+				for(let j=0;j<state.articles[i].like_users.length;j++){
 					if(state.articles[i].like_users[j].userid==userid){
 						myliked.push(state.articles[i].article_id);
 						break;
