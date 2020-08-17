@@ -6,7 +6,7 @@ import articletags from './articletags.js'
 
 let articles = []
 
-for(let i=0;i<10;i++){
+for(let i=0;i<20;i++){
 	let article ={
 		article_id:i,
 		article_title:"第"+i+"篇专栏文章",
@@ -49,13 +49,13 @@ for(let i=0;i<10;i++){
 	}
 	articles.push(article);
 }
-for(let i=10;i<20;i++){
+for(let i=20;i<40;i++){
 	let article ={
 		article_id:i,
 		article_title:"第"+i+"篇专栏文章",
 		article_author:users[1].username,
 		article_tag:[
-			articletags[i%2],
+			articletags[1],
 			articletags[i%3]
 		],
 		article_date:Random.date(),

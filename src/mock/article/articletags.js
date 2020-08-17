@@ -2,17 +2,17 @@ let articletags = []
 
 articletags.push({
 	tag_id:0,
-	tag_name:"前端"
+	tag_name:"html"
 })
 
 articletags.push({
 	tag_id:1,
-	tag_name:"html5"
+	tag_name:"css"
 })
 
 articletags.push({
 	tag_id:2,
-	tag_name:"css3"
+	tag_name:"js"
 })
 
 articletags.push({

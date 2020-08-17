@@ -2,12 +2,12 @@
   <div class="profile">
     <router-link :to="{name:'index'}">
       <div class="logo">
-        <i>Async技术社区</i>
+        <i>Async技术社区（点击返回首页）</i>
       </div>
     </router-link>
 
     <div class="header">
-      <h1>Profile</h1>
+      <h1>{{username}}的个人中心</h1>
     </div>
     
     <div>
@@ -34,7 +34,12 @@
 
 <script>
 export default{
-	name: "Profile"
+	name: "Profile",
+  computed:{
+    username:function(){
+      return this.$store.state.user.username
+    }
+  }
 }
 </script>
 
@@ -43,8 +48,10 @@ export default{
 	width: 100%;
 }
 .profile .header{
-  padding: 0 30px;
-  height: 80px;
+  padding: 10px 40px;
+  height: 200px;
   line-height: 80px;
+  background-image: url('../../assets/images/background.jpg');
+  color: #333;
 }
 </style>

@@ -19,38 +19,49 @@
     </div>
 
     <div v-if="!isclassify">
-      <div class="articleItem" v-for="(article,index) in articles" v-bind:key="index">
-        <div class="articleTitle" v-on:click="goColumnItem(index)">
-          <!--使用编程式的导航-->
-          {{article.article_title}}
+      <div v-for="(article,index) in articles" v-bind:key="index">
+
+        <div v-if="index>=4*(pageinfo.currentpage)&&index<4*(pageinfo.currentpage+1)" class="articleItem">
+          <div class="articleTitle" v-on:click="goColumnItem(index)">
+            <!--使用编程式的导航-->
+            {{article.article_title}}
+          </div>
+          <div class="articleAuthor">
+            author:{{article.article_author}}
+          </div>
+          <div class="articleContent">
+            {{article.article_content}}
+          </div>
+          <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
+            {{article.like_number}}
+          </div>
         </div>
-        <div class="articleAuthor">
-          author:{{article.article_author}}
-        </div>
-        <div class="articleContent">
-          {{article.article_content}}
-        </div>
-        <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
-          {{article.like_number}}
-        </div>
+        
       </div>
     </div>
     
     <div v-else>
-      <div class="articleItem" v-for="(article,index) in classifyArticles" v-bind:key="index">
-        <div class="articleTitle" v-on:click="goColumnItem(article.article_id)">
-          {{article.article_title}}
-        </div>
-        <div class="articleAuthor">
-          author:{{article.article_author}}
-        </div>
-        <div class="articleContent">
-          {{article.article_content}}
-        </div>
-        <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
-          {{article.like_number}}
+      <div v-for="(article,index) in classifyArticles" v-bind:key="index">
+        <div v-if="index>=4*(pageinfo.currentpage)&&index<4*(pageinfo.currentpage+1)" class="articleItem">
+          <div class="articleTitle" v-on:click="goColumnItem(article.article_id)">
+            <!--使用编程式的导航-->
+            {{article.article_title}}
+          </div>
+          <div class="articleAuthor">
+            author:{{article.article_author}}
+          </div>
+          <div class="articleContent">
+            {{article.article_content}}
+          </div>
+          <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
+            {{article.like_number}}
+          </div>
         </div>
       </div>
+    </div>
+
+    <div class="paging" v-if="pageinfo.pagenum>4">
+      <Pagination v-bind:pageinfo="pageinfo" v-on:switchpage="switchPage"/>
     </div>
 
   </div>
@@ -58,14 +69,25 @@
 
 <script>
 import articletags from '../../mock/article/articletags.js'
+import Pagination from '@/components/main/Pagination.vue'
 export default {
   name: 'Column',
+  components:{
+    Pagination
+  },
   data:function(){
     return {
       articletags:articletags, //所有的分类标签
       isclassify:false, //是否分类
       newArticles:[], //分类后的文章数组
       currentTag: -1,//当前标签索引
+
+      //pagination
+      pageinfo:{
+        pagenum:40,
+        left:0,
+        currentpage:0,
+      }
     }
   },
   computed:{
@@ -81,6 +103,15 @@ export default {
     },
     articles:function(){
       return this.$store.state.article.articles
+    },
+    page:function(){
+      let page=this.pageinfo.pagenum/4
+      /*
+      if(this.pageinfo.pagenum%4!=0){
+        page++
+      }
+      */
+      return page
     }
   },
   methods:{
@@ -91,7 +122,7 @@ export default {
     },
     likeArticle:function(article_id){
       //console.log(index)
-      var index=article_id-1
+      var index=article_id
       //点赞前需要确认是否已经登录
       if(this.$store.state.user.haslogin){
         //修改相应的state
@@ -121,6 +152,9 @@ export default {
     allArticles:function(){
       this.isclassify=false
       this.currentTag=-1
+      this.pageinfo.pagenum=this.articles.length
+      this.pageinfo.currentpage=0
+      this.pageinfo.left=0
     },
 
     //显示分类文章
@@ -139,6 +173,28 @@ export default {
       console.log(this.newArticles);
       this.isclassify=true
       this.currentTag=tag_id
+      this.pageinfo.pagenum=this.newArticles.length
+      this.pageinfo.currentpage=0
+      this.pageinfo.left=0
+    },
+
+    //切换page
+    switchPage(switchinfo){
+      if(switchinfo=="addPage"){
+        if(this.pageinfo.currentpage<this.page-1){
+          if(this.pageinfo.currentpage<this.page-3&&this.pageinfo.currentpage>1){
+            this.pageinfo.left=this.pageinfo.left-80
+          }
+          this.pageinfo.currentpage++
+        }
+      }else if(switchinfo=="subPage"){
+        if(this.pageinfo.currentpage>0){
+          if(this.pageinfo.currentpage<this.page-2&&this.pageinfo.currentpage>2){
+            this.pageinfo.left=this.pageinfo.left+80
+          }
+          this.pageinfo.currentpage--
+        } 
+      }
     },
 
   }
@@ -234,6 +290,13 @@ export default {
 	background: -o-linear-gradient(right, transparent, #fff 55%);
 	background: -moz-linear-gradient(right, transparent, #fff 55%);
 	background: linear-gradient(to right, transparent, #fff 55%);
+}
+.paging{
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  background-color: #fff;
+  text-align: center;
 }
 
 </style>

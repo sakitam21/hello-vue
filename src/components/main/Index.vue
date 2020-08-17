@@ -2,6 +2,11 @@
   <div class="index">
     <h1 style="margin: 20px 0;">Index Component</h1>
 
+    <div class="paging">
+      <Pagination v-bind:pageinfo="pageinfo" v-on:switchpage="switchPage"/>
+    </div>
+    
+
     <div class="sidebarlist">
       <div class="sidebar">
         <ul>
@@ -40,12 +45,24 @@
 
 <script>
 import articletags from '../../mock/article/articletags.js'
+import Pagination from '@/components/main/Pagination.vue'
 export default {
   name: 'Index',
+  components:{
+    Pagination
+  },
   data:function(){
     return {
       articletags:articletags,
       tag: 0,
+
+      //pagination
+      pageinfo:{
+        pagenum:7,
+        left:0,
+        currentpage:0,
+      }
+      //pageList:[1,2,3,4,5,6,7],
     }
   },
   computed:{
@@ -59,6 +76,25 @@ export default {
       let tag = event.target.value
       this.tag=tag
       //console.log(this.tag)
+    },
+    switchPage(switchinfo){
+      if(switchinfo=="addPage"){
+        let pagenum=this.pageinfo.pagenum
+        if(this.pageinfo.currentpage<pagenum-1){
+          if(this.pageinfo.currentpage<pagenum-3&&this.pageinfo.currentpage>1){
+            this.pageinfo.left=this.pageinfo.left-80
+          }
+          this.pageinfo.currentpage++
+        }
+      }else if(switchinfo=="subPage"){
+        let pagenum=this.pageinfo.pagenum
+        if(this.pageinfo.currentpage>0){
+          if(this.pageinfo.currentpage<pagenum-2&&this.pageinfo.currentpage>2){
+            this.pageinfo.left=this.pageinfo.left+80
+          }
+          this.pageinfo.currentpage--
+        } 
+      }
     },
   }
 }
@@ -110,5 +146,12 @@ export default {
 	vertical-align: top;
 	background-color: #fff;
 	border-radius: 5px;
+}
+.paging{
+  width: 580px;
+  height: 50px;
+  margin: 10px 0;
+  background-color: #fff;
+  text-align: center;
 }
 </style>
