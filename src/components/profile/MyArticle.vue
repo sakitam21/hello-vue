@@ -1,6 +1,5 @@
 <template>
   <div class="myarticle">
-    myarticle
     <!--{{myarticles}}-->
     <div class="content">
       <div v-for="(article,index) in myarticles" v-bind:key="index">

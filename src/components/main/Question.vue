@@ -1,6 +1,12 @@
 <template>
   <div class="question">
-    <h1>Question</h1>
+    <h1>Question Component</h1>
+
+    <div class="addQuestion" v-if="haslogin">
+      <router-link :to="{name:'addquestion'}">
+        AddQuestion
+      </router-link>
+    </div>
 
     <div class="allTags">
       <ul>
@@ -57,6 +63,9 @@ export default {
     classifyQuestions:function(){
       return this.newQuestions
     },
+    haslogin:function(){
+      return this.$store.state.user.haslogin
+    }, 
     questions:function(){
       return this.$store.state.question.questions
     }
@@ -71,7 +80,7 @@ export default {
       this.currentTag=-1
     },
 
-    //显示分类文章
+    //显示分类问题
     classifyQuestion:function(tag_id){
       //alert(tag_id);
       let allQuestions=this.questions
@@ -97,7 +106,15 @@ export default {
 .question{
 	padding: 30px 8%;
 }
-
+.question .addQuestion{
+  width: 120px;
+  height: 32px;
+  border: 1px solid #333;
+  text-align: center;
+  line-height: 32px;
+  margin: 10px auto;
+  border-radius: 5px;
+}
 .question .allTags{
   margin: 30px auto;
   width: 100%;

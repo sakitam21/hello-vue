@@ -6,6 +6,10 @@ const question = {
 		getQuestionByIndex:(state)=>(index)=>{
 			return state.questions[index]
 		},
+		//获取问题数量
+		getQuestionNum:state=>{
+			return state.questions.length
+		},
 	},
 	mutations:{
 		initialQuestions(state,questions){
@@ -16,6 +20,9 @@ const question = {
 			let answer_content=answer.answer_content
 			state.questions[question_id].answer_content.push(answer_content)
 			state.questions[question_id].answer_number= state.questions[question_id].answer_content.length
+		},
+		addQuestion(state,newquestion){
+			state.questions=[...state.questions,newquestion]
 		}
 	},
 }

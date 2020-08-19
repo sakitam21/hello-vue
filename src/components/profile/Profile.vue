@@ -72,6 +72,9 @@ export default{
   line-height: 60px;
   border-bottom: 1px solid #333;
 }
+.sidebar ul .router-link-active{
+  color: #008b8b !important;
+}
 .content .allarticle{
   width: 50%;
   border: 1px solid #333;

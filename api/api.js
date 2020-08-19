@@ -47,6 +47,20 @@ let collectArticle = apiBaseurl+"article/collectArticle"
 get请求，返回所有问题信息的数组
 */
 let getAllQuestions = apiBaseurl+"question/getAllQuestions"
+/*
+添加问题请求
+post请求，六个参数（问题id,question_author,question_content,
+question_date(YYYY-MM-DD格式),question_tag(对象数组))
+返回添加是否成功的信息
+*/
+let addQuestion = apiBaseurl+"question/addQuestion"
+/*
+撰写问题回答的请求
+post请求，六个参数（question_id,answer_id,answer_content,answer_date,
+userid,username)
+返回是否回答成功
+*/
+let writeAnswer = apiBaseurl+"question/writeAnswer"
 
 //user模块
 /*
@@ -56,3 +70,9 @@ get请求，两个参数（username，password），返回整个user的信息
 let signin = apiBaseurl+'user/signin'
 
 //注册
+//user模块
+/*
+登录
+post请求，两个参数（username，password），返回整个user的信息
+*/
+let signup = apiBaseurl+'user/signup'

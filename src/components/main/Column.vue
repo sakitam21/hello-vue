@@ -2,6 +2,12 @@
   <div class="column">
     <h1>Column Component</h1>
 
+    <div class="addArticle" v-if="haslogin">
+      <router-link :to="{name:'addarticle'}">
+        AddArticle
+      </router-link>
+    </div>
+
     <div class="allTags">
       <ul>
         <!--在前端用函数分类-->
@@ -10,12 +16,6 @@
           {{tag.tag_name}}
         </li>
       </ul>
-    </div>
-
-    <div class="addArticle" v-if="haslogin">
-      <router-link :to="{name:'addarticle'}">
-        AddArticle
-      </router-link>
     </div>
 
     <div v-if="!isclassify">

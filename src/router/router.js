@@ -14,6 +14,7 @@ import AddArticle from '@/components/main/AddArticle.vue';
 //question module
 import Question from '@/components/main/Question.vue';
 import QuestionItem from '@/components/main/QuestionItem.vue';
+import AddQuestion from '@/components/main/AddQuestion.vue';
 
 //resource module
 import Download from '@/components/main/Download.vue';
@@ -68,6 +69,11 @@ export default new VueRouter({
 					path:'question/questionid=:questionid',
 					name:'questionitem',
 					component: QuestionItem
+				},
+				{
+					path:'question/addquestion',
+					name:'addquestion',
+					component:AddQuestion
 				},
 				{
 					path:'download',
