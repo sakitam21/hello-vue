@@ -16,7 +16,7 @@ const question = {
 			state.questions=[...questions]
 		},
 		writeAnswer(state,answer){
-			let question_id=answer.question_id
+			let question_id=answer.question_id-1
 			let answer_content=answer.answer_content
 			state.questions[question_id].answer_content.push(answer_content)
 			state.questions[question_id].answer_number= state.questions[question_id].answer_content.length

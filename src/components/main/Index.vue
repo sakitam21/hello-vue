@@ -59,7 +59,7 @@ export default {
 
       //pagination
       pageinfo:{
-        pagenum:40,
+        pagenum:204,
         left:0,
         currentpage:0,
       }

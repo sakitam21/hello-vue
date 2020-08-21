@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import {writeAnswer} from '@/api/api.js'
 export default{
   name:'QuestionItem',
   data:function(){
@@ -70,24 +72,44 @@ export default{
   },
   methods:{
     writeAnswer:function(){
+      let that=this
+      that.answer=''
       let question_id = this.question.question_id
       let answer_id = this.question.answer_number+1
       let userid = this.$store.state.user.userid
       let username = this.$store.state.user.username
       let answer_content = this.answer
       let answer_date = new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()
-      let answer ={
+
+      axios.post(writeAnswer,{
         question_id:question_id,
-        answer_content:{
-          answer_id: answer_id,
-          answer_content:answer_content,
-          userid:userid,
-          username:username,
-          answer_date:answer_date
+        answer_id: answer_id,
+        answer_content:answer_content,
+        userid:userid,
+        username:username,
+        answer_date:answer_date
+      }).then(function(response){
+        if(response.data){
+          alert("答案提交成功！")
+          let answer ={
+            question_id:question_id,
+            answer_content:{
+              answer_id: answer_id,
+              answer_content:answer_content,
+              userid:userid,
+              username:username,
+              answer_date:answer_date
+            }
+          }
+          that.$store.commit('writeAnswer',answer)
+        }else{
+          alert("答案提交失败！")
         }
-      }
-      console.log(answer)
-      this.$store.commit('writeAnswer',answer)
+      }).catch(function(error){
+        console.log(error)
+        alert("答案提交失败！")
+      })
+      
     }
   }
 }

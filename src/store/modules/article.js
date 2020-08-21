@@ -152,7 +152,7 @@ const article = {
 			if(likemsg.isliked){
 				//已经点赞了
 				state.articles[likemsg.index].like_number--
-				for(var i=0;i<state.articles[likemsg.index].like_users.length;i++){
+				for(let i=0;i<state.articles[likemsg.index].like_users.length;i++){
 					if(state.articles[likemsg.index].like_users[i].userid==likemsg.user.userid){
 						state.articles[likemsg.index].like_users.splice(i,1)
 						break;

@@ -8,7 +8,7 @@ import router from './router/router.js'
 import './mock/index.js'
 
 //axios
-import axios from 'axios'
+import axios from 'axios' // eslint-disable-line no-unused-vars
 
 //阿里巴巴矢量图标库
 import '@/assets/icon/iconfont.css'
@@ -16,7 +16,7 @@ import '@/assets/icon/iconfont.css'
 //store
 import store from './store/store.js'
 
-axios.defaults.baseURL = 'http://mockjs.com/api'
+//axios.defaults.baseURL = 'http://mockjs.com/api'
 
 //路由跳转后回到顶部
 router.afterEach((to,from,next) => { // eslint-disable-line no-unused-vars

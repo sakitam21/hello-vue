@@ -21,6 +21,11 @@ const user = {
 		editsignup(state){
 			state.hassignup=!state.hassignup
 		},
+		cancelsignin(state){
+			state.haslogin=false
+			state.username=""
+			state.password=""
+		}
 	}
 }
 

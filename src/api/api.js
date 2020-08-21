@@ -1,78 +1,82 @@
-let apiBaseurl="http://localhost:8080/"
+//let apiBaseurl="http://localhost:8080/"
+let apiBaseurl="http://183.175.11.64:8080/"
 
-//article模块
+//article模块 Success
 /*
 获取所有文章请求
 get请求，返回所有文章信息的数组
 */
-let getAllArticles = apiBaseurl+"article/getAllArticles"
+export let getAllArticles = apiBaseurl+"article/getAllArticles"
+
 /*
-分页请求
+分页请求 Delete
 get请求，两个参数（当前页，每页的文章数量），返回对应数量的article数组
 */
-let getArticlesByPage = apiBaseurl+"article/getArticlesByPage"
+export let getArticlesByPage = apiBaseurl+"article/getArticlesByPage"
+
 /*
-添加文章请求
+添加文章请求 Success
 post请求，六个参数（文章id，article_title,article_author,article_content,
 article_date(YYYY-MM-DD格式),article_tag(对象数组))
 返回添加是否成功的信息
 */
-let addArticle = apiBaseurl+"article/addArticle"
+export let addArticle = apiBaseurl+"article/addArticle"
 /*
 文章点赞的请求
 post请求，三个参数（user信息，article_id，isliked（是否已经点赞，如果点赞了
 就取消，没点赞就点赞）
 返回点赞是否成功的消息
 */
-let likeArticle = apiBaseurl+"article/likeArticle"
+export let likeArticle = apiBaseurl+"article/likeArticle"
 /*
 评论文章的请求
 post请求，五个参数（article_id,comment_id,comment_content,comment_date,
 user信息（一个对象）)
 返回是否评论成功
 */
-let commentArticle = apiBaseurl+"article/commentArticle"
+export let commentArticle = apiBaseurl+"article/commentArticle"
 /*
 文章收藏的请求
 post请求，三个参数（user信息，article_id，iscollected（是否已经收藏，如果点赞了
 就收藏，没收藏就收藏）
 返回收藏是否成功的消息
 */
-let collectArticle = apiBaseurl+"article/collectArticle"
+export let collectArticle = apiBaseurl+"article/collectArticle"
 
 
-//question模块
+//question模块 Success
 /*
 获取所有问题请求
 get请求，返回所有问题信息的数组
 */
-let getAllQuestions = apiBaseurl+"question/getAllQuestions"
+export let getAllQuestions = apiBaseurl+"question/getAllQuestions"
+
 /*
-添加问题请求
-post请求，六个参数（问题id,question_author,question_content,
+添加问题请求 Success
+post请求，五个参数（问题id,question_author,question_content,
 question_date(YYYY-MM-DD格式),question_tag(对象数组))
 返回添加是否成功的信息
 */
-let addQuestion = apiBaseurl+"question/addQuestion"
+export let addQuestion = apiBaseurl+"question/addQuestion"
 /*
-撰写问题回答的请求
+撰写问题回答的请求 Success
 post请求，六个参数（question_id,answer_id,answer_content,answer_date,
 userid,username)
 返回是否回答成功
 */
-let writeAnswer = apiBaseurl+"question/writeAnswer"
+export let writeAnswer = apiBaseurl+"question/writeAnswer"
 
-//user模块
-/*
-登录
-get请求，两个参数（username，password），返回整个user的信息
-*/
-let signin = apiBaseurl+'user/signin'
-
-//注册
-//user模块
+//user模块  Success
 /*
 登录
 post请求，两个参数（username，password），返回整个user的信息
 */
-let signup = apiBaseurl+'user/signup'
+export let signin = apiBaseurl+'user/signin'
+
+//注册
+//user模块 Success
+/*
+登录
+post请求，两个参数（username，password），返回整个user的信息
+*/
+export let signup = apiBaseurl+'user/signup'

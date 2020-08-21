@@ -22,7 +22,7 @@
       <div v-for="(article,index) in articles" v-bind:key="index">
 
         <div v-if="index>=4*(pageinfo.currentpage)&&index<4*(pageinfo.currentpage+1)" class="articleItem">
-          <div class="articleTitle" v-on:click="goColumnItem(index)">
+          <div class="articleTitle" v-on:click="goColumnItem(article.article_id)">
             <!--使用编程式的导航-->
             {{article.article_title}}
           </div>
@@ -54,6 +54,7 @@
             {{article.article_content}}
           </div>
           <div v-bind:class="{like:true,liked:haslogin&&myliked.indexOf(article.article_id)!=-1}" v-on:click="likeArticle(article.article_id)">
+            
             {{article.like_number}}
           </div>
         </div>
@@ -84,7 +85,7 @@ export default {
 
       //pagination
       pageinfo:{
-        pagenum:40,
+        pagenum:204,
         left:0,
         currentpage:0,
       }
@@ -122,7 +123,7 @@ export default {
     },
     likeArticle:function(article_id){
       //console.log(index)
-      var index=article_id
+      var index=article_id-1
       //点赞前需要确认是否已经登录
       if(this.$store.state.user.haslogin){
         //修改相应的state
@@ -131,16 +132,22 @@ export default {
         if(this.myliked.indexOf(article_id)!=-1){
           isliked=true
         }
+
+        var userid=this.$store.state.user.userid
+        var username=this.$store.state.user.username
+        var password=this.$store.state.user.password
+
         var likemsg={
           user:{
-            userid:0,
-            username:"root",
-            password:"password",
+            userid:userid,
+            username:username,
+            password:password,
           },
           index:index,
           article_id:article_id,
           isliked:isliked
         }
+
         this.$store.commit('likeArticle',likemsg)
         console.log(this.$store.getters.myLikedArticles(0))
       }else{

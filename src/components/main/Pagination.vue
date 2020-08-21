@@ -36,34 +36,16 @@ export default{
     }
   },
   created:function(){
-    let num=this.pageinfo.pagenum
+    let num=this.pageinfo.pagenum/4
     for(let i=1;i<=num;i++){
       this.pageList.push(i)
     }
   },
   methods:{
     addPage:function(){
-      /*
-      let pagenum=this.pageList.length
-      if(this.currentpage<pagenum-1){
-        if(this.currentpage<pagenum-3&&this.currentpage>1){
-          this.left=this.left-80
-        }
-        this.currentpage++
-      }
-      */
       this.$emit('switchpage','addPage')
     },
     subPage:function(){
-      /*
-      let pagenum=this.pageList.length
-      if(this.currentpage>0){
-        if(this.currentpage<pagenum-2&&this.currentpage>2){
-          this.left=this.left+80
-        }
-        this.currentpage--
-      }
-      */
       this.$emit('switchpage','subPage')
     },
   }
@@ -94,7 +76,6 @@ export default{
 	position: absolute;
 	top: 0;
 	left: 80px;
-	width:800px;
 	height: 40px;
 }
 .list .listitem{

@@ -29,7 +29,9 @@
 </template>
 
 <script>
+import axios from 'axios'
 import articletags from '../../mock/article/articletags.js'
+import {addQuestion} from '@/api/api.js'
 export default{
  name:'AddQuestion',
  data:function(){
@@ -41,6 +43,7 @@ export default{
   methods:{
     addQuestion:function(){
       //需要提交一个Action请求
+      let that = this
       var question_id = this.$store.getters.getQuestionNum
       var username = this.$store.state.user.username
       var question_tag=[]
@@ -53,10 +56,30 @@ export default{
         question_author:username,
         question_tag:question_tag,
         question_date:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
-        question_content:this.content,
+        question_content:that.content,
         answer_number:0,
         answer_content:[]
       }
+
+      axios.post(addQuestion,{
+        question_id:question_id,
+        question_author:username,
+        question_tag:question_tag,
+        question_date:new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
+        question_content:that.content,
+      }).then(function(response){
+        if(response.data){
+          that.$store.commit('addQuestion',newquestion)
+          alert("问题提交成功！")
+        }else{
+          alert("问题提交失败！")
+        }
+      }).catch(function(error){
+        console.log(error)
+        alert("问题提交失败！")
+      })
+
+      /*
       //console.log(newquestion)
       this.$store.commit('addQuestion',newquestion)
       if(this.$store.getters.getQuestionNum==question_id+1){
@@ -66,6 +89,8 @@ export default{
         //添加失败
         alert("问题提交失败！")
       }
+      */
+
       //跳转页面
       this.$router.push({name:'question'})
     },

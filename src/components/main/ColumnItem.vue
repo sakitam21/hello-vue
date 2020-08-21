@@ -89,14 +89,14 @@ export default{
     },
     article:function(){
       var index = this.$route.params.columnid
-      return this.$store.getters.getArticleByIndex(index)
+      return this.$store.getters.getArticleByIndex(index-1)
     },
   },
   methods:{
 	likeArticle:function(article_id){
       //console.log(index)
       //点赞前需要确认是否已经登录
-      var index=article_id
+      var index=article_id-1
       if(this.$store.state.user.haslogin){
 		//修改相应的state
         //需要把user_id,username,index,article_id,和是否已经点赞isliked都传过去（使用对象）
@@ -104,11 +104,15 @@ export default{
         if(this.myliked.indexOf(article_id)!=-1){
           isliked=true
         }
+        var userid=this.$store.state.user.userid
+        var username=this.$store.state.user.username
+        var password=this.$store.state.user.password
+        
         var likemsg={
           user:{
-            userid:0,
-            username:"root",
-            password:"password",
+            userid:userid,
+            username:username,
+            password:password,
           },
           index:index,
           article_id:article_id,
@@ -123,7 +127,7 @@ export default{
     collectArticle:function(article_id){
       //console.log(index)
       //点赞前需要确认是否已经登录
-      var index=article_id
+      var index=article_id-1
       if(this.$store.state.user.haslogin){
 		//修改相应的state
         //需要把user_id,username,index,article_id,和是否已经点赞isliked都传过去（使用对象）
@@ -131,11 +135,14 @@ export default{
         if(this.mycollected.indexOf(article_id)!=-1){
           iscollected=true
         }
+        var userid=this.$store.state.user.userid
+        var username=this.$store.state.user.username
+        var password=this.$store.state.user.password
         var collectmsg={
           user:{
-            userid:0,
-            username:"root",
-            password:"password",
+            userid:userid,
+            username:username,
+            password:password,
           },
           index:index,
           article_id:article_id,
@@ -224,7 +231,6 @@ export default{
 	height: 30px;
 }
 .articlebody .annotation .tags{
-	width: 160px;
 	height: 30px;
 	float: left;
 }

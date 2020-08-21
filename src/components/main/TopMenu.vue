@@ -43,6 +43,7 @@
 
     <div class="user" v-else>
       <div class="usericon" v-on:click="showMyprofile">
+        <img src="@/assets/images/avatar.jpg" style="width: 40px;height: 40px;float: left;margin-left: 20px;">
         {{this.$store.state.user.username}}
       </div>
       <!--需要有一个遮罩层mask-->
@@ -58,7 +59,7 @@
         <router-link :to="{name:'mycollect'}">
           <li>我的收藏</li>
         </router-link>
-        <li style="text-align: center;color: #008b8b;">注销</li>
+        <li style="text-align: center;color: #008b8b;" v-on:click="cancelSignin">注销</li>
         </ul>
       </div>
     </div>
@@ -97,6 +98,10 @@ export default{
     showMyprofile:function(){
       this.showprofile=!this.showprofile
     },
+    //注销登录
+    cancelSignin:function(){
+      this.$store.commit('cancelsignin')
+    }
   },
 }
 </script>
@@ -192,17 +197,20 @@ export default{
   vertical-align: top;
   text-align: center;
   font-size: 18px;
-  line-height: 32px;
+  line-height: 40px;
+  padding: 2px 0;
   float: right;
   width: 180px;
   border: 1px solid #333;
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
   letter-spacing: 2px;
+  background-color: #f6f6f6;
+  margin-top: -5px;
   color: #333;
 }
 .user .profile{
   position: absolute;
-  top: 42px;
+  top: 46px;
   right: 0;
   width: 160px;
   border: 1px solid #333;
