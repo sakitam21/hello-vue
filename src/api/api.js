@@ -1,5 +1,5 @@
 //let apiBaseurl="http://localhost:8080/"
-let apiBaseurl="http://183.175.11.64:8080/"
+let apiBaseurl="https://183.175.11.64:8080/"
 
 //article模块 Success
 /*
